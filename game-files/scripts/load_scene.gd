@@ -30,7 +30,6 @@ func _process(_delta):
 func _on_intro_animation_finished() -> void:
 	intro_sprite.visible = false
 	CAN_MOVE = true
-	pass # Replace with function body.
 
 func start_game():
 	get_tree().change_scene_to_file("res://scenes/start_scene.tscn")

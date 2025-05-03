@@ -46,7 +46,8 @@ signal im_dead
 @export var east_anim : AnimatedSprite2D
 @export var west_anim : AnimatedSprite2D
 
-var bass1 : AudioStream = preload("res://audio/bass1.mp3")
+#region Load Audio
+var bass1 : AudioStream = preload("uid://cyjwha2w17whm")
 var bass2 : AudioStream = preload("res://audio/bass2.mp3")
 var bass3 : AudioStream = preload("res://audio/bass3.mp3")
 
@@ -61,7 +62,7 @@ var snare3 : AudioStream = preload("res://audio/snare3.mp3")
 var vox1 : AudioStream = preload("res://audio/vox1.mp3")
 var vox2 : AudioStream = preload("res://audio/vox2.mp3")
 var vox3 : AudioStream = preload("res://audio/vox3.mp3")
-
+#endregion
 @export var speaker : AudioStreamPlayer2D 
 ## Plays when the character dies
 @export var death_sound : AudioStreamPlayer2D

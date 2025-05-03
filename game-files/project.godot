@@ -10,9 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Gbjam-12"
+config/name="RED HERRING"
+config/tags=PackedStringArray("porfolio_project")
 run/main_scene="res://scenes/load_scene.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=60
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
