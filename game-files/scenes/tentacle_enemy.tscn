@@ -1,6 +1,6 @@
 [gd_scene load_steps=49 format=3 uid="uid://d2dk6axl8a5gy"]
 
-[ext_resource type="Script" uid="uid://b0efurlcwfr8g" path="res://scripts/bad_guy.gd" id="1_kco5d"]
+[ext_resource type="Script" uid="uid://b0efurlcwfr8g" path="res://scripts/tentacle_enemy.gd" id="1_kco5d"]
 [ext_resource type="Texture2D" uid="uid://c7ks6jjguvf0a" path="res://tilesets/tentacle_birth.png" id="2_p61fy"]
 [ext_resource type="Texture2D" uid="uid://dgieawg6xejc3" path="res://tilesets/tentacle_death.png" id="3_th5dm"]
 [ext_resource type="Texture2D" uid="uid://bdhxihbqpf0bw" path="res://tilesets/tentacle.png" id="4_60kgh"]

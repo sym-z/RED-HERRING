@@ -48,20 +48,20 @@ signal im_dead
 
 #region Load Audio
 var bass1 : AudioStream = preload("uid://cyjwha2w17whm")
-var bass2 : AudioStream = preload("res://audio/bass2.mp3")
-var bass3 : AudioStream = preload("res://audio/bass3.mp3")
+var bass2 : AudioStream = preload("uid://dtnjo6i7j4ukt")
+var bass3 : AudioStream = preload("uid://by51ly27piauc")
 
-var hihat1 : AudioStream = preload("res://audio/hihat1.mp3")
-var hihat2 : AudioStream = preload("res://audio/hihat2.mp3")
-var hihat3 : AudioStream = preload("res://audio/hihat3.mp3")
+var hihat1 : AudioStream = preload("uid://jxt6o03m6kx6")
+var hihat2 : AudioStream = preload("uid://bpmpek71nj05w")
+var hihat3 : AudioStream = preload("uid://b3igj4isoer1u")
 
-var snare1 : AudioStream= preload("res://audio/snare1.mp3")
-var snare2 : AudioStream = preload("res://audio/snare2.mp3")
-var snare3 : AudioStream = preload("res://audio/snare3.mp3")
+var snare1 : AudioStream= preload("uid://brt383pk05y5t")
+var snare2 : AudioStream = preload("uid://cbfp3ukjwgao3")
+var snare3 : AudioStream = preload("uid://dnres6fb30kbe")
 
-var vox1 : AudioStream = preload("res://audio/vox1.mp3")
-var vox2 : AudioStream = preload("res://audio/vox2.mp3")
-var vox3 : AudioStream = preload("res://audio/vox3.mp3")
+var vox1 : AudioStream = preload("uid://clsi7r6ar6tjq")
+var vox2 : AudioStream = preload("uid://dj0xgv50wsadm")
+var vox3 : AudioStream = preload("uid://e6ajqmnwjjuw")
 #endregion
 @export var speaker : AudioStreamPlayer2D 
 ## Plays when the character dies
@@ -88,22 +88,18 @@ func _ready():
 			aim_dir = AIM.NORTH
 			sprite.rotation_degrees = 0
 			sprite.flip_v = true
-			pass
 		AIM.SOUTH:
 			aim_dir = AIM.SOUTH
 			sprite.flip_v = false
 			sprite.rotation_degrees = 0
-			pass
 		AIM.EAST:
 			aim_dir = AIM.EAST
 			sprite.rotation_degrees = 270
 			sprite.flip_v = false
-			pass
 		AIM.WEST:
 			aim_dir = AIM.WEST
 			sprite.rotation_degrees = 90
 			sprite.flip_v = false
-			pass
 	sprite.animation = 'default'
 	sprite.frame = 0
 	### HOLDS GUNS TO MAKE FIRING CODE EASIER ###

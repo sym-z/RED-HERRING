@@ -1,6 +1,6 @@
 [gd_scene load_steps=38 format=3 uid="uid://c2ajpu1p3djgq"]
 
-[ext_resource type="Script" uid="uid://mvu117vt8ojo" path="res://scripts/radial_guy.gd" id="1_cln5v"]
+[ext_resource type="Script" uid="uid://mvu117vt8ojo" path="res://scripts/fish_head_enemy.gd" id="1_cln5v"]
 [ext_resource type="Texture2D" uid="uid://cvrktqn7j284k" path="res://tilesets/head_birth.png" id="2_qu4jm"]
 [ext_resource type="Texture2D" uid="uid://bhv8cgerdxbqp" path="res://tilesets/head_death.png" id="3_wq0iq"]
 [ext_resource type="Texture2D" uid="uid://rbm6lag82sgk" path="res://tilesets/fish_head.png" id="4_2i8cq"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=3 uid="uid://cf6ar5dxqu7h2"]
 
-[ext_resource type="Script" uid="uid://cs1xgeb6xj8qg" path="res://scripts/goodguy.gd" id="1_q0ltr"]
+[ext_resource type="Script" uid="uid://cs1xgeb6xj8qg" path="res://scripts/player.gd" id="1_q0ltr"]
 [ext_resource type="Texture2D" uid="uid://e7ikq0li4bug" path="res://tilesets/player_character_death.png" id="2_iq05d"]
 [ext_resource type="Texture2D" uid="uid://dnr4kijueocql" path="res://tilesets/player_character_shot.png" id="2_sf58l"]
 [ext_resource type="Texture2D" uid="uid://cf2p8tb3cae4f" path="res://tilesets/fish_shot.png" id="4_uugo7"]
@@ -240,7 +240,7 @@ animations = [{
 "speed": 21.0
 }]
 
-[node name="Good Guy" type="Node2D" node_paths=PackedStringArray("NORTH_GUN", "SOUTH_GUN", "EAST_GUN", "WEST_GUN", "hurtbox", "sprite", "respawn_clock", "north_anim", "south_anim", "east_anim", "west_anim", "speaker", "death_sound")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("NORTH_GUN", "SOUTH_GUN", "EAST_GUN", "WEST_GUN", "hurtbox", "sprite", "respawn_clock", "north_anim", "south_anim", "east_anim", "west_anim", "speaker", "death_sound")]
 script = ExtResource("1_q0ltr")
 NORTH_GUN = NodePath("Firing Directions/NORTH")
 SOUTH_GUN = NodePath("Firing Directions/SOUTH")
