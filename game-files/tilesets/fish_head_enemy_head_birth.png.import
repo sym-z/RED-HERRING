@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhv8cgerdxbqp"
-path="res://.godot/imported/head_death.png-6a052c01af9b505ec9631a6f89fdfab6.ctex"
+uid="uid://cvrktqn7j284k"
+path="res://.godot/imported/fish_head_enemy_head_birth.png-1589f48c25eb672288fbc861e25900dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesets/head_death.png"
-dest_files=["res://.godot/imported/head_death.png-6a052c01af9b505ec9631a6f89fdfab6.ctex"]
+source_file="res://tilesets/fish_head_enemy_head_birth.png"
+dest_files=["res://.godot/imported/fish_head_enemy_head_birth.png-1589f48c25eb672288fbc861e25900dd.ctex"]
 
 [params]
 

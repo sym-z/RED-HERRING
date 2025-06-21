@@ -1,7 +1,7 @@
 [gd_scene load_steps=74 format=3 uid="uid://bu4h040kg82ue"]
 
 [ext_resource type="Texture2D" uid="uid://bfcpwtl4aw3xa" path="res://sprites/resolution-test.png" id="1_1dbbh"]
-[ext_resource type="Script" path="res://scripts/load_scene.gd" id="1_gbejk"]
+[ext_resource type="Script" uid="uid://duvcx83ftmksg" path="res://scripts/load_scene.gd" id="1_gbejk"]
 [ext_resource type="Texture2D" uid="uid://cyb2apxgu84og" path="res://tilesets/intro.png" id="3_7jiqu"]
 [ext_resource type="Texture2D" uid="uid://btcpvgeh5c6un" path="res://sprites/red_herring_lvl1.png" id="4_3osbr"]
 [ext_resource type="Texture2D" uid="uid://bgtc7bvhdgwyn" path="res://sprites/red_herring_lvl2.png" id="5_e77e3"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rbm6lag82sgk"
-path="res://.godot/imported/fish_head.png-48423298d7ecbe8b607e40754e7ceff8.ctex"
+path="res://.godot/imported/fish_head_enemy.png-9125d2af38d4dc3c168498c311dc83a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesets/fish_head.png"
-dest_files=["res://.godot/imported/fish_head.png-48423298d7ecbe8b607e40754e7ceff8.ctex"]
+source_file="res://tilesets/fish_head_enemy.png"
+dest_files=["res://.godot/imported/fish_head_enemy.png-9125d2af38d4dc3c168498c311dc83a2.ctex"]
 
 [params]
 

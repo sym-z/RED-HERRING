@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvrktqn7j284k"
-path="res://.godot/imported/head_birth.png-4ffe5ae3bd6a8f1ec537d9293a444eb9.ctex"
+uid="uid://dgieawg6xejc3"
+path="res://.godot/imported/tentacle_enemy_death.png-b8200c711d9c4a8d9d2e0273d9644985.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesets/head_birth.png"
-dest_files=["res://.godot/imported/head_birth.png-4ffe5ae3bd6a8f1ec537d9293a444eb9.ctex"]
+source_file="res://tilesets/tentacle_enemy_death.png"
+dest_files=["res://.godot/imported/tentacle_enemy_death.png-b8200c711d9c4a8d9d2e0273d9644985.ctex"]
 
 [params]
 

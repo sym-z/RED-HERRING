@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdhxihbqpf0bw"
-path="res://.godot/imported/tentacle.png-c531ec4a9b3b2b279a04335fb4f88107.ctex"
+uid="uid://dhlhb5cq8emkq"
+path="res://.godot/imported/eyeball_enemy.png-2079450c7e0e194c4ec76374a2b9edf2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesets/tentacle.png"
-dest_files=["res://.godot/imported/tentacle.png-c531ec4a9b3b2b279a04335fb4f88107.ctex"]
+source_file="res://tilesets/eyeball_enemy.png"
+dest_files=["res://.godot/imported/eyeball_enemy.png-2079450c7e0e194c4ec76374a2b9edf2.ctex"]
 
 [params]
 

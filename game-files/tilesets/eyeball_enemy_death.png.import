@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhlhb5cq8emkq"
-path="res://.godot/imported/eyeball-sheet.png-2a0757f0af91c54de59ea4cdcdcad41c.ctex"
+uid="uid://c5awjik8e6j31"
+path="res://.godot/imported/eyeball_enemy_death.png-9590f627c8fd75975710f8910e75ae15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesets/eyeball-sheet.png"
-dest_files=["res://.godot/imported/eyeball-sheet.png-2a0757f0af91c54de59ea4cdcdcad41c.ctex"]
+source_file="res://tilesets/eyeball_enemy_death.png"
+dest_files=["res://.godot/imported/eyeball_enemy_death.png-9590f627c8fd75975710f8910e75ae15.ctex"]
 
 [params]
 
