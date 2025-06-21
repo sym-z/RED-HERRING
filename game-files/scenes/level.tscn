@@ -147,28 +147,28 @@ bg = NodePath("../Tween")
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="NORTH" type="Marker2D" parent="Markers"]
-position = Vector2(80, 0)
+position = Vector2(320, 0)
 
 [node name="DEBUG" type="Sprite2D" parent="Markers/NORTH"]
 visible = false
 texture = ExtResource("9_gunhw")
 
 [node name="SOUTH" type="Marker2D" parent="Markers"]
-position = Vector2(80, 144)
+position = Vector2(320, 576)
 
 [node name="DEBUG" type="Sprite2D" parent="Markers/SOUTH"]
 visible = false
 texture = ExtResource("9_gunhw")
 
 [node name="EAST" type="Marker2D" parent="Markers"]
-position = Vector2(160, 75)
+position = Vector2(640, 300)
 
 [node name="DEBUG" type="Sprite2D" parent="Markers/EAST"]
 visible = false
 texture = ExtResource("9_gunhw")
 
 [node name="WEST" type="Marker2D" parent="Markers"]
-position = Vector2(0, 74)
+position = Vector2(0, 296)
 
 [node name="DEBUG" type="Sprite2D" parent="Markers/WEST"]
 visible = false
