@@ -483,6 +483,7 @@ animations = [{
 }]
 
 [node name="Load Scene" type="Node2D" node_paths=PackedStringArray("intro_sprite", "title_sprite")]
+scale = Vector2(4, 4)
 script = ExtResource("1_gbejk")
 intro_sprite = NodePath("Intro")
 title_sprite = NodePath("Title")

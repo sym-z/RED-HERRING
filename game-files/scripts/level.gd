@@ -78,7 +78,7 @@ func position_actors():
 	### ASSIGN VALUES FOR POSITIONING ###
 	SCREENX = floor(get_viewport_rect().size.x)
 	SCREENY = floor(get_viewport_rect().size.y) 
-	CENTERX = floor(get_viewport_rect().size.x / 2) + 8
+	CENTERX = floor(get_viewport_rect().size.x / 2) + 32
 	CENTERY = floor(get_viewport_rect().size.y / 2)
 	
 	### CENTER PLAYER ###
@@ -99,7 +99,7 @@ func position_actors():
 	Emark.position.y = CENTERY
 	
 	# WEST SPAWNER #
-	Wmark.position.x = -spwn_offset + 16 #ALERT CHANGE THIS
+	Wmark.position.x = -spwn_offset + 64 #ALERT CHANGE THIS
 	Wmark.position.y = CENTERY
 	
 	## SET UP SCORE TEXT LINK BETWEEN PLAYER AND TEXT BOX

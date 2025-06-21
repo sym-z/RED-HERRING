@@ -32,6 +32,7 @@ animations = [{
 [node name="Start Scene" type="Control" node_paths=PackedStringArray("moving_parts", "play_mark", "controls_mark", "credits_mark", "ambience", "menu_pick_noise", "controls_splash", "credits_splash", "hud_image", "hud_text")]
 layout_mode = 3
 anchors_preset = 0
+scale = Vector2(4, 4)
 script = ExtResource("1_0uf1s")
 moving_parts = NodePath("Moving Parts")
 play_mark = NodePath("Play Mark")

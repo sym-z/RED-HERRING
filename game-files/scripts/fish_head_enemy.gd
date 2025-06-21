@@ -8,7 +8,7 @@ extends Node2D
 @export var score_value : int = 1000
 
 ## Used fpr initial positioning
-@export var radius : int = 35
+@export var radius : int = 35 
 ## What is being rotated
 @export var body : Node2D
 
@@ -30,7 +30,7 @@ extends Node2D
 ## A reference to the enemy's sprite
 @export var sprite : AnimatedSprite2D 
 ## How far this enemy will move in one jump
-@export var movement_distance : int = 45
+#@export var movement_distance : int = 45 ## TODO: CHANGE TO *4?
 ## How often this enemy jumps
 @export var move_dur : float = 0.6
 
@@ -54,7 +54,7 @@ func _ready():
 	
 
 	### ASSIGN VALUES FOR POSITIONING ###
-	var CENTERX = get_viewport_rect().size.x / 2 + 16 #ALERT CHANGE THIS
+	var CENTERX = get_viewport_rect().size.x / 2 + 64 #ALERT CHANGE THIS
 	var CENTERY = get_viewport_rect().size.y / 2 
 	# Align Orbit
 	### USED THIS FOR HELP ###

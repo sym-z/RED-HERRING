@@ -1,9 +1,9 @@
 [gd_scene load_steps=75 format=3 uid="uid://0rxultecbvo7"]
 
 [ext_resource type="Script" uid="uid://bctu4akkvacaf" path="res://scripts/eyeball_enemy.gd" id="1_e8j0f"]
-[ext_resource type="Texture2D" uid="uid://ph7o6phdqvs0" path="res://tilesets/eyeball_birth.png" id="2_17t5y"]
-[ext_resource type="Texture2D" uid="uid://c5awjik8e6j31" path="res://tilesets/worse_guy_death_spritesheet.png" id="3_sia7j"]
-[ext_resource type="Texture2D" uid="uid://dhlhb5cq8emkq" path="res://tilesets/eyeball-sheet.png" id="4_q5i08"]
+[ext_resource type="Texture2D" uid="uid://ph7o6phdqvs0" path="res://tilesets/eyeball_enemy_birth.png" id="2_17t5y"]
+[ext_resource type="Texture2D" uid="uid://c5awjik8e6j31" path="res://tilesets/eyeball_enemy_death.png" id="3_sia7j"]
+[ext_resource type="Texture2D" uid="uid://dhlhb5cq8emkq" path="res://tilesets/eyeball_enemy.png" id="4_q5i08"]
 [ext_resource type="AudioStream" uid="uid://ephgokp0jetk" path="res://audio/eyeball_death.mp3" id="5_dpald"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjo41"]
