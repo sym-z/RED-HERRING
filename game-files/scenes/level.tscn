@@ -141,7 +141,7 @@ frame_progress = 0.647923
 offset = Vector2(96, 72)
 
 [node name="Player" parent="." node_paths=PackedStringArray("bg") instance=ExtResource("8_82cfe")]
-position = Vector2(96, 72)
+position = Vector2(384, 288)
 bg = NodePath("../Tween")
 
 [node name="Markers" type="Node2D" parent="."]
@@ -178,8 +178,8 @@ texture = ExtResource("9_gunhw")
 autostart = true
 
 [node name="Worse Guy Path" type="Path2D" parent="."]
-position = Vector2(16, 4.466)
-scale = Vector2(4, 3.864)
+position = Vector2(61.98, 4.466)
+scale = Vector2(4, 4)
 curve = SubResource("Curve2D_bbhxf")
 
 [node name="Difficulty Bump" type="AudioStreamPlayer2D" parent="."]
