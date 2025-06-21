@@ -11,9 +11,9 @@ var CENTERY : int
 @export var player  : Node2D
 
 ### LOAD ENEMY SCENES ###
-var enemy = preload("res://scenes/bad_guy.tscn")
-var enemy_pather = preload("res://scenes/worse_guy.tscn")
-var enemy_radial = preload("res://scenes/radial_guy.tscn")
+var enemy = preload("uid://d2dk6axl8a5gy")
+var enemy_pather = preload("uid://0rxultecbvo7")
+var enemy_radial = preload("uid://c2ajpu1p3djgq")
 
 
 ### HOLDING SPAWNERS ###

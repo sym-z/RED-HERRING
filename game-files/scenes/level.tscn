@@ -1,22 +1,22 @@
 [gd_scene load_steps=14 format=3 uid="uid://d164o0t7vod04"]
 
-[ext_resource type="Script" path="res://scripts/level_one.gd" id="1_bmkg0"]
-[ext_resource type="Texture2D" uid="uid://b7cr4mssud7j0" path="res://sprites/life_can.png" id="2_5vfvv"]
-[ext_resource type="Texture2D" uid="uid://dfj4l37vw4fiq" path="res://sprites/title_2.png" id="2_fo3mq"]
-[ext_resource type="Script" path="res://scripts/Tween.gd" id="2_r4d43"]
-[ext_resource type="PackedScene" uid="uid://cf6ar5dxqu7h2" path="res://scenes/goodguy.tscn" id="3_6i0ce"]
-[ext_resource type="FontFile" uid="uid://ddp7ms5o882hh" path="res://tilesets/large.png" id="3_8oh36"]
-[ext_resource type="FontFile" uid="uid://c3ogr0b34lgr" path="res://tilesets/small.png" id="4_fbjmb"]
-[ext_resource type="Texture2D" uid="uid://drss4k4hdm2rj" path="res://sprites/dummy-enemy.png" id="5_cdm3v"]
-[ext_resource type="Texture2D" uid="uid://c4nehn781r68g" path="res://sprites/background_final.png" id="6_1ay0v"]
-[ext_resource type="AudioStream" uid="uid://spjloutlnuj4" path="res://audio/difficulty_raise.mp3" id="10_5e1y1"]
-[ext_resource type="AudioStream" uid="uid://ct0u1emj07ow7" path="res://audio/level_music.mp3" id="11_tx4yw"]
+[ext_resource type="Script" uid="uid://dxrp4mtc474qc" path="res://scripts/level.gd" id="1_t1rx8"]
+[ext_resource type="Texture2D" uid="uid://b7cr4mssud7j0" path="res://sprites/life_can.png" id="2_8iemx"]
+[ext_resource type="FontFile" uid="uid://ddp7ms5o882hh" path="res://tilesets/large.png" id="3_64w2a"]
+[ext_resource type="FontFile" uid="uid://c3ogr0b34lgr" path="res://tilesets/small.png" id="4_fpun6"]
+[ext_resource type="Script" uid="uid://cbb0r8irdlt1j" path="res://scripts/Tween.gd" id="5_wc255"]
+[ext_resource type="Texture2D" uid="uid://c4nehn781r68g" path="res://sprites/background_final.png" id="6_arp2o"]
+[ext_resource type="Texture2D" uid="uid://dfj4l37vw4fiq" path="res://sprites/title_2.png" id="7_ux5qa"]
+[ext_resource type="PackedScene" uid="uid://cf6ar5dxqu7h2" path="res://scenes/player.tscn" id="8_82cfe"]
+[ext_resource type="Texture2D" uid="uid://drss4k4hdm2rj" path="res://sprites/dummy-enemy.png" id="9_gunhw"]
+[ext_resource type="AudioStream" uid="uid://spjloutlnuj4" path="res://audio/difficulty_raise.mp3" id="10_8gofh"]
+[ext_resource type="AudioStream" uid="uid://ct0u1emj07ow7" path="res://audio/level_music.mp3" id="11_h6wmr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s2qrt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_fo3mq")
+"texture": ExtResource("7_ux5qa")
 }],
 "loop": true,
 "name": &"default",
@@ -30,8 +30,8 @@ _data = {
 point_count = 86
 
 [node name="Level One" type="Node2D" node_paths=PackedStringArray("player", "Nmark", "Smark", "Emark", "Wmark", "spawn_clock", "path", "score_text", "h_score_text", "LIFE_1", "LIFE_2", "LIFE_3", "difficulty_noise", "music")]
-script = ExtResource("1_bmkg0")
-player = NodePath("Good Guy")
+script = ExtResource("1_t1rx8")
+player = NodePath("Player")
 Nmark = NodePath("Markers/NORTH")
 Smark = NodePath("Markers/SOUTH")
 Emark = NodePath("Markers/EAST")
@@ -65,19 +65,19 @@ alignment = 2
 z_index = 10
 texture_filter = 3
 layout_mode = 2
-texture = ExtResource("2_5vfvv")
+texture = ExtResource("2_8iemx")
 
 [node name="Life2" type="TextureRect" parent="Life Icons/VBoxContainer"]
 z_index = 10
 texture_filter = 3
 layout_mode = 2
-texture = ExtResource("2_5vfvv")
+texture = ExtResource("2_8iemx")
 
 [node name="Life1" type="TextureRect" parent="Life Icons/VBoxContainer"]
 z_index = 10
 texture_filter = 3
 layout_mode = 2
-texture = ExtResource("2_5vfvv")
+texture = ExtResource("2_8iemx")
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
@@ -98,7 +98,7 @@ offset_bottom = 100.735
 [node name="RichTextLabel" type="RichTextLabel" parent="HUD/Score"]
 z_index = 2
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("3_8oh36")
+theme_override_fonts/normal_font = ExtResource("3_64w2a")
 theme_override_font_sizes/normal_font_size = 10
 text = "0000000000"
 fit_content = true
@@ -112,7 +112,7 @@ offset_bottom = 81.0
 [node name="RichTextLabel" type="RichTextLabel" parent="HUD/High Score"]
 z_index = 3
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("4_fbjmb")
+theme_override_fonts/normal_font = ExtResource("4_fpun6")
 theme_override_font_sizes/normal_font_size = 8
 text = "00000000000"
 fit_content = true
@@ -123,14 +123,14 @@ anchors_preset = 0
 offset_left = -36.0
 offset_top = -40.0
 offset_right = 4.0
-script = ExtResource("2_r4d43")
+script = ExtResource("5_wc255")
 tex = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="Tween"]
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 240.0
-texture = ExtResource("6_1ay0v")
+texture = ExtResource("6_arp2o")
 
 [node name="Background" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -138,7 +138,7 @@ sprite_frames = SubResource("SpriteFrames_s2qrt")
 frame_progress = 0.647923
 offset = Vector2(96, 72)
 
-[node name="Good Guy" parent="." node_paths=PackedStringArray("bg") instance=ExtResource("3_6i0ce")]
+[node name="Player" parent="." node_paths=PackedStringArray("bg") instance=ExtResource("8_82cfe")]
 position = Vector2(96, 72)
 bg = NodePath("../Tween")
 
@@ -149,28 +149,28 @@ position = Vector2(80, 0)
 
 [node name="DEBUG" type="Sprite2D" parent="Markers/NORTH"]
 visible = false
-texture = ExtResource("5_cdm3v")
+texture = ExtResource("9_gunhw")
 
 [node name="SOUTH" type="Marker2D" parent="Markers"]
 position = Vector2(80, 144)
 
 [node name="DEBUG" type="Sprite2D" parent="Markers/SOUTH"]
 visible = false
-texture = ExtResource("5_cdm3v")
+texture = ExtResource("9_gunhw")
 
 [node name="EAST" type="Marker2D" parent="Markers"]
 position = Vector2(160, 75)
 
 [node name="DEBUG" type="Sprite2D" parent="Markers/EAST"]
 visible = false
-texture = ExtResource("5_cdm3v")
+texture = ExtResource("9_gunhw")
 
 [node name="WEST" type="Marker2D" parent="Markers"]
 position = Vector2(0, 74)
 
 [node name="DEBUG" type="Sprite2D" parent="Markers/WEST"]
 visible = false
-texture = ExtResource("5_cdm3v")
+texture = ExtResource("9_gunhw")
 
 [node name="Spawn Timer" type="Timer" parent="."]
 autostart = true
@@ -181,13 +181,13 @@ scale = Vector2(1, 0.965648)
 curve = SubResource("Curve2D_bbhxf")
 
 [node name="Difficulty Bump" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_5e1y1")
+stream = ExtResource("10_8gofh")
 volume_db = -12.0
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_tx4yw")
+stream = ExtResource("11_h6wmr")
 volume_db = -3.0
 parameters/looping = true
 
-[connection signal="im_dead" from="Good Guy" to="." method="_on_good_guy_im_dead"]
+[connection signal="im_dead" from="Player" to="." method="_on_good_guy_im_dead"]
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]

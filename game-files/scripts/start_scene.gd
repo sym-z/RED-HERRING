@@ -163,7 +163,7 @@ func menu_move(input):
 func menu_choice():
 	match current_choice:
 		WINDOW.PLAY:
-			get_tree().change_scene_to_file("res://scenes/level_one.tscn")
+			get_tree().change_scene_to_file("res://scenes/level.tscn")
 		WINDOW.CONTROLS:
 			menu_pick_noise.play()
 			controls_splash.visible = !controls_splash.visible
