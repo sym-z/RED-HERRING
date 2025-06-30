@@ -29,8 +29,9 @@ _data = {
 }
 point_count = 86
 
-[node name="Level One" type="Node2D" node_paths=PackedStringArray("player", "Nmark", "Smark", "Emark", "Wmark", "spawn_clock", "path", "score_text", "h_score_text", "LIFE_1", "LIFE_2", "LIFE_3", "difficulty_noise", "music")]
+[node name="Level One" type="Node2D" node_paths=PackedStringArray("parent_node", "player", "Nmark", "Smark", "Emark", "Wmark", "spawn_clock", "path", "score_text", "h_score_text", "LIFE_1", "LIFE_2", "LIFE_3", "difficulty_noise", "music")]
 script = ExtResource("1_t1rx8")
+parent_node = NodePath(".")
 player = NodePath("Player")
 Nmark = NodePath("Markers/NORTH")
 Smark = NodePath("Markers/SOUTH")
@@ -192,4 +193,5 @@ volume_db = -3.0
 parameters/looping = true
 
 [connection signal="im_dead" from="Player" to="." method="_on_good_guy_im_dead"]
+[connection signal="use_special" from="Player" to="." method="_on_player_use_special"]
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]

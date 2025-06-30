@@ -244,8 +244,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojjiy"]
 size = Vector2(64, 60)
 
-[node name="Fish Head Enemy" type="Node2D" node_paths=PackedStringArray("body", "creep_clock", "sprite", "death_sound")]
+[node name="Fish Head Enemy" type="Node2D" node_paths=PackedStringArray("hit_box", "body", "creep_clock", "sprite", "death_sound") groups=["Enemies"]]
 script = ExtResource("1_cln5v")
+hit_box = NodePath("Guy/Hit Box")
 radius = 260
 body = NodePath("Guy")
 creep_clock = NodePath("Creep Timer")

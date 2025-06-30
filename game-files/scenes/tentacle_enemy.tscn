@@ -314,9 +314,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_nuiqs"]
 radius = 6.0
 
-[node name="Tentacle Enemy" type="Node2D" node_paths=PackedStringArray("sprite", "death_sound")]
+[node name="Tentacle Enemy" type="Node2D" node_paths=PackedStringArray("sprite", "hit_box", "death_sound") groups=["Enemies"]]
 script = ExtResource("1_kco5d")
 sprite = NodePath("AnimatedSprite2D")
+hit_box = NodePath("Hit Box")
 death_sound = NodePath("Death Sound")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

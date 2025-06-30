@@ -7,6 +7,7 @@ extends Node2D
 
 ## How much score is alloted for killing this enemy
 @export var score_value : int = 250
+@export var hit_box : Area2D
 ## How often difficulty tick happens
 @export var difficulty_tick : int = Globals.CHANGE_AT 
 ## Amount score changes every tick

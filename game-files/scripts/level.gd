@@ -1,6 +1,7 @@
 ### FIRST LEVEL OF THE GAME ###
 extends Node2D
 
+@export var parent_node : Node2D 
 ### FOR POSITIONING ###
 var SCREENX : int
 var SCREENY : int 
@@ -72,8 +73,8 @@ func _ready():
 	DIR.EAST  : 0,
 	DIR.WEST  : 0
 	}
-func _process(_delta):
-	pass
+
+
 func position_actors():
 	### ASSIGN VALUES FOR POSITIONING ###
 	SCREENX = floor(get_viewport_rect().size.x)
@@ -199,3 +200,12 @@ func _on_enemy_inst_diff_bump():
 		max_spawn_time -= delta_spawn
 		print("max decrease")
 		pass
+
+
+func _on_player_use_special() -> void:
+	for child in parent_node.get_children(true):
+		if child.is_in_group("Enemies"):
+			player.got_kill(child.hit_box)
+	for eyeball in path.get_children(true):
+		if eyeball.is_in_group("Enemies"):
+			player.got_kill(eyeball.hit_box)

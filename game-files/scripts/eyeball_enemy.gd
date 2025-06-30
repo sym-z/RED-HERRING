@@ -5,7 +5,7 @@
 extends PathFollow2D
 ## Speed of this guy
 @export var speed : float = 100
-
+@export var hit_box : Area2D
 @export var damage : int = 1
 @export var health : int = 1
 ## How much score is alloted when this enemy is killed

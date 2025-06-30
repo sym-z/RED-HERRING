@@ -496,9 +496,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaq4j"]
 size = Vector2(22, 22)
 
-[node name="Eyeball Enemy" type="PathFollow2D" node_paths=PackedStringArray("sprite", "death_sound")]
+[node name="Eyeball Enemy" type="PathFollow2D" node_paths=PackedStringArray("hit_box", "sprite", "death_sound") groups=["Enemies"]]
 rotates = false
 script = ExtResource("1_e8j0f")
+hit_box = NodePath("Hit Box")
 sprite = NodePath("AnimatedSprite2D")
 death_sound = NodePath("Death Sound")
 

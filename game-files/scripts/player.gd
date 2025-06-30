@@ -82,6 +82,12 @@ var instruments = [] # ALL INSTRUMENTS
 
 ## Handles game over change
 var game_over : bool = false
+
+## SPECIAL ATTACK
+var consecutive_hits : int = 0
+## How many hits are necessary before using a special attack
+@export var minimum_special_charge : int = 3
+signal use_special
 func _ready():
 	match Globals.LAST_DIR:
 		AIM.NORTH:
@@ -176,6 +182,8 @@ func input_handler(DEBUG = false):
 			print("S T A R T")
 	else:
 		srt_but = false
+	if Input.is_action_just_pressed("SPECIAL"):
+		special_attack()
 
 func _on_hurtbox_area_entered(area):
 	# Check to see if collider is an enemy
@@ -192,6 +200,8 @@ func _on_hurtbox_area_entered(area):
 
 func die():
 	print("YOU DIED")
+	consecutive_hits = 0
+	print("Special Reset")
 	dead = true
 	im_dead.emit()
 	sprite.visible = false
@@ -264,21 +274,28 @@ func fire():
 		var target = curr_gun.get_collider()
 ## SOURCE: https://forum.godotengine.org/t/random-beginner-question-add-0-before-single-timer-digit/11688/3
 		if target and target.is_in_group("Enemies") and target.owner.CAN_MOVE:
-			# Damage Enemy
-			# Isolate the root node of the enemy, and apply damage to its health
-			Globals.KILLS += 1
-			target.owner.hurt(damage)
-			## CHANGE TEXT ON SCORE
-			score_text.text = "%010d" % Globals.SCORE
-			print(score_text.text)
-			## CHANGE TEXT ON HIGH SCORE
-			if Globals.SCORE > Globals.HIGH_SCORE:
-				Globals.HIGH_SCORE = Globals.SCORE
-			h_score_text.text = "%010d" % Globals.HIGH_SCORE
-			
+			got_kill(target)
 		else:
-
+			consecutive_hits = 0
+			print("Special Reset")
 			pass
+
+func got_kill(target):
+# Damage Enemy
+	print("KILLED ", target)
+	
+	# Isolate the root node of the enemy, and apply damage to its health
+	Globals.KILLS += 1
+	target.owner.hurt(damage)
+	## CHANGE TEXT ON SCORE
+	score_text.text = "%010d" % Globals.SCORE
+	#print(score_text.text)
+	## CHANGE TEXT ON HIGH SCORE
+	if Globals.SCORE > Globals.HIGH_SCORE:
+		Globals.HIGH_SCORE = Globals.SCORE
+	h_score_text.text = "%010d" % Globals.HIGH_SCORE
+	consecutive_hits += 1
+	#print("Special Level: ", consecutive_hits)
 
 func restart_level():
 	respawn_clock.start()
@@ -326,3 +343,8 @@ func load_sounds():
 	voxes.append(vox1)
 	voxes.append(vox2)
 	voxes.append(vox3)
+
+func special_attack():
+	if consecutive_hits >= minimum_special_charge:
+		use_special.emit()
+		consecutive_hits = 0

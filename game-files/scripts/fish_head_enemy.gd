@@ -6,7 +6,7 @@ extends Node2D
 @export var health : int = 1
 ## How much score is awarded when killed
 @export var score_value : int = 1000
-
+@export var hit_box : Area2D
 ## Used fpr initial positioning
 @export var radius : int = 35 
 ## What is being rotated
