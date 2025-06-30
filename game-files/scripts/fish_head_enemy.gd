@@ -1,7 +1,7 @@
 extends Node2D
 ### CIRCLING ENEMY ###
 # FOLLOWS SET CIRCULAR PATH
-@export var speed : float = 45
+@export var speed : float = 90
 @export var damage : int = 1
 @export var health : int = 1
 ## How much score is awarded when killed
@@ -54,7 +54,7 @@ func _ready():
 	
 
 	### ASSIGN VALUES FOR POSITIONING ###
-	var CENTERX = get_viewport_rect().size.x / 2 + 64 #ALERT CHANGE THIS
+	var CENTERX = get_viewport_rect().size.x / 2 + 16 #ALERT CHANGE THIS
 	var CENTERY = get_viewport_rect().size.y / 2 
 	# Align Orbit
 	### USED THIS FOR HELP ###
@@ -99,10 +99,14 @@ func hurt(dam):
 # The enemy creeps toward the center every second
 func _on_creep_timer_timeout():
 	if !player.dead and CAN_MOVE:
-		if body.position.x - radial_creep < 0:
-			body.position = Vector2.ZERO
-		else:
-			body.position -= Vector2(radial_creep,0)
+		#if body.position.x - radial_creep < 0:
+		#	body.position = Vector2.ZERO
+		#else:
+			#print("HUH?")
+			body.global_position = body.global_position.lerp(player.global_position,0.05)
+			speed += speed /8
+			#body.global_position = body.global_position.move_toward(player.global_position, 1.0)
+			#body.position -= Vector2(radial_creep,0)
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
