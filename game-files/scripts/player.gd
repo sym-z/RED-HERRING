@@ -85,8 +85,10 @@ var game_over : bool = false
 
 ## SPECIAL ATTACK
 var consecutive_hits : int = 0
+signal combo_updated
 ## How many hits are necessary before using a special attack
 @export var minimum_special_charge : int = 3
+signal special_ready
 signal use_special
 func _ready():
 	match Globals.LAST_DIR:
@@ -277,6 +279,7 @@ func fire():
 			got_kill(target)
 		else:
 			consecutive_hits = 0
+			combo_updated.emit()
 			print("Special Reset")
 			pass
 
@@ -295,6 +298,9 @@ func got_kill(target):
 		Globals.HIGH_SCORE = Globals.SCORE
 	h_score_text.text = "%010d" % Globals.HIGH_SCORE
 	consecutive_hits += 1
+	if consecutive_hits >= minimum_special_charge:
+		special_ready.emit()
+	combo_updated.emit()
 	#print("Special Level: ", consecutive_hits)
 
 func restart_level():
@@ -348,3 +354,4 @@ func special_attack():
 	if consecutive_hits >= minimum_special_charge:
 		use_special.emit()
 		consecutive_hits = 0
+		combo_updated.emit()

@@ -17,6 +17,7 @@ var CAN_CHANGE : bool = true
 var timer
 var GAME_OVER_SCORE : int = 0
 var HIGH_SCORE : int = 0
+var highest_combo : int = 0
 
 # To allow for kills during difficulty changes
 var CHANGING_DIFF : bool = false
@@ -67,4 +68,5 @@ func raise_difficulty(delta_score):
 
 func _on_timer_timeout():
 	CAN_CHANGE = true
+	timer.call_deferred("queue_free")
 	#print('difficulty pause stop')

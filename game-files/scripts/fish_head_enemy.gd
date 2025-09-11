@@ -1,6 +1,8 @@
 extends Node2D
+
 ### CIRCLING ENEMY ###
 # FOLLOWS SET CIRCULAR PATH
+@export_category("Stats")
 @export var speed : float = 90
 @export var damage : int = 1
 @export var health : int = 1
@@ -10,6 +12,7 @@ extends Node2D
 ## Used fpr initial positioning
 @export var radius : int = 35 
 ## What is being rotated
+@export_category("References")
 @export var body : Node2D
 
 ## The timer for the creep
