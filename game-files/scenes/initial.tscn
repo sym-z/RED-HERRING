@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://byss4cejlocok"]
+
+[node name="Initial" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Up Arrow" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Down Arrow" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

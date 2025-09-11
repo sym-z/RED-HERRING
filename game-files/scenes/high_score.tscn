@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctaseihks685x"]
+
+[ext_resource type="Script" uid="uid://c5qajprmqxwnm" path="res://scripts/high_score.gd" id="1_7k23f"]
+[ext_resource type="PackedScene" uid="uid://byss4cejlocok" path="res://scenes/initial.tscn" id="2_qrrcb"]
+
+[node name="High Score" type="Control" node_paths=PackedStringArray("init_1", "init_2", "init_3")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7k23f")
+init_1 = NodePath("MarginContainer/HBoxContainer/Initial")
+init_2 = NodePath("MarginContainer/HBoxContainer/Initial2")
+init_3 = NodePath("MarginContainer/HBoxContainer/Initial3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Initial" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_qrrcb")]
+layout_mode = 2
+text = "A"
+
+[node name="Initial2" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_qrrcb")]
+layout_mode = 2
+text = "A"
+
+[node name="Initial3" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_qrrcb")]
+layout_mode = 2
+text = "A"
+
+[node name="Submit" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "DONE"

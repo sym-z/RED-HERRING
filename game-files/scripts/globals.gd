@@ -68,5 +68,5 @@ func raise_difficulty(delta_score):
 
 func _on_timer_timeout():
 	CAN_CHANGE = true
-	timer.call_deferred("queue_free")
+	#timer.call_deferred("queue_free")
 	#print('difficulty pause stop')
