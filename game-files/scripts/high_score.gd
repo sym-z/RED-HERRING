@@ -4,7 +4,10 @@ extends Control
 @export var init_1 : Label
 @export var init_2 : Label
 @export var init_3 : Label
-var init_arr : Array[Label] = []
+
+@export_category("Submit Label")
+@export var submit : Label
+var label_arr : Array[Label] = []
 
 var char_dict : Dictionary[int,String] = {
 	0: 'A',
@@ -47,9 +50,8 @@ var char_dict : Dictionary[int,String] = {
 	37: '?',
 	38: '.'
 }
+# Char dict encoding of initials
 var initials : Array[int] = [0,0,0]
-
-enum SELECTABLES {ONE,TWO,THREE,BUTTON}
 
 
 var curr_selection : int = 0
@@ -57,6 +59,7 @@ var curr_label : Label
 
 var total_chars : int = char_dict.keys().size()
 
+enum SELECTIONS {INIT_1,INIT_2,INIT_3,SUBMIT}
 func initials_to_string() -> String:
 	var retval = ""
 	for letter in initials:
@@ -66,38 +69,45 @@ func initials_to_string() -> String:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("DPAD-DOWN"):
 		decrease_char()
-		pass
 	elif event.is_action_pressed("DPAD-UP"):
 		increase_char()
-		pass
 	elif event.is_action_pressed("DPAD-LEFT"):
-		curr_selection += 1
-		pass
+		select_left()
 	elif event.is_action_pressed("DPAD-RIGHT"):
-		curr_selection += 1
-		pass
+		select_right()
 	
 func increase_char():
-	initials[curr_selection] += 1 
-	initials[curr_selection] %= total_chars
-	curr_label.text = char_dict[initials[curr_selection]]
-	pass
+	if curr_selection != SELECTIONS.SUBMIT:
+		initials[curr_selection] += 1 
+		initials[curr_selection] %= total_chars
+		curr_label.text = char_dict[initials[curr_selection]]
 	
 func decrease_char():
-	initials[curr_selection] -= 1 
-	if initials[curr_selection] < 0:
-		initials[curr_selection] = total_chars - 1
-	curr_label.text = char_dict[initials[curr_selection]]
-	pass
+	if curr_selection != SELECTIONS.SUBMIT:
+		initials[curr_selection] -= 1 
+		if initials[curr_selection] < 0:
+			initials[curr_selection] = total_chars - 1
+		curr_label.text = char_dict[initials[curr_selection]]
 	
 func select_left():
-	pass
+	curr_selection -= 1
+	if curr_selection <= 0:
+		curr_selection = label_arr.size() - 1
+	curr_label = label_arr[curr_selection]
+	if curr_selection == SELECTIONS.SUBMIT:
+		label_arr[SELECTIONS.SUBMIT].text = "SELECTED"
+	else:
+		label_arr[SELECTIONS.SUBMIT].text = "DONE"
 	
 func select_right():
-	pass
+	curr_selection += 1
+	if curr_selection >= label_arr.size():
+		curr_selection = 0
+	curr_label = label_arr[curr_selection]
+	if curr_selection == SELECTIONS.SUBMIT:
+		label_arr[SELECTIONS.SUBMIT].text = "SELECTED"
+	else:
+		label_arr[SELECTIONS.SUBMIT].text = "DONE"
 func _ready():
-	init_arr = [init_1,init_2,init_3]
-	curr_label = init_arr[curr_selection]
-	
-	print(curr_label)
-	print(initials_to_string())
+	label_arr = [init_1,init_2,init_3,submit]
+	curr_label = label_arr[curr_selection]
