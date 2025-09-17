@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctaseihks685x"]
+[gd_scene load_steps=4 format=3 uid="uid://ctaseihks685x"]
 
 [ext_resource type="Script" uid="uid://c5qajprmqxwnm" path="res://scripts/high_score.gd" id="1_7k23f"]
 [ext_resource type="PackedScene" uid="uid://byss4cejlocok" path="res://scenes/initial.tscn" id="2_qrrcb"]
+[ext_resource type="Theme" uid="uid://064arhy1k4mb" path="res://theme/high_score_label.tres" id="3_uy73o"]
 
 [node name="High Score" type="Control" node_paths=PackedStringArray("init_1", "init_2", "init_3", "submit")]
 layout_mode = 3
@@ -26,16 +27,20 @@ layout_mode = 2
 
 [node name="Initial" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_qrrcb")]
 layout_mode = 2
+theme = ExtResource("3_uy73o")
 text = "A"
 
 [node name="Initial2" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_qrrcb")]
 layout_mode = 2
+theme = ExtResource("3_uy73o")
 text = "A"
 
 [node name="Initial3" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_qrrcb")]
 layout_mode = 2
+theme = ExtResource("3_uy73o")
 text = "A"
 
 [node name="Submit" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_uy73o")
 text = "DONE"
