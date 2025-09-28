@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://064arhy1k4mb"]
 
-[ext_resource type="FontFile" uid="uid://ba775kkrsi1tl" path="res://tilesets/med_font.png" id="1_gbo37"]
+[ext_resource type="FontFile" uid="uid://dvudd0okjw3ad" path="res://tilesets/med_font_2.png" id="1_gbo37"]
 
 [resource]
 Label/colors/font_shadow_color = Color(0, 0, 0, 1)

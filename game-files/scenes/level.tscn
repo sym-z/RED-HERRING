@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://drss4k4hdm2rj" path="res://sprites/dummy-enemy.png" id="9_gunhw"]
 [ext_resource type="AudioStream" uid="uid://spjloutlnuj4" path="res://audio/difficulty_raise.mp3" id="10_8gofh"]
 [ext_resource type="AudioStream" uid="uid://ct0u1emj07ow7" path="res://audio/level_music.mp3" id="11_h6wmr"]
-[ext_resource type="FontFile" uid="uid://ba775kkrsi1tl" path="res://tilesets/med_font.png" id="12_8iemx"]
+[ext_resource type="FontFile" uid="uid://dvudd0okjw3ad" path="res://tilesets/med_font_2.png" id="12_8iemx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s2qrt"]
 animations = [{
@@ -216,7 +216,7 @@ theme_override_constants/margin_top = 510
 z_index = 4
 layout_mode = 2
 theme_override_fonts/font = ExtResource("12_8iemx")
-text = "COMBO_0"
+text = "COMBO: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -227,7 +227,7 @@ theme_override_constants/margin_bottom = 540
 [node name="Special Label" type="Label" parent="HUD Layer/Play Screen Container/Special Notification"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("12_8iemx")
-text = "SPECIAL_READY!"
+text = "SPECIAL READY!"
 horizontal_alignment = 1
 vertical_alignment = 1
 

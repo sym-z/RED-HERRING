@@ -119,7 +119,9 @@ func _ready():
 func _process(_delta):
 	if !dead:
 		input_handler()
-
+func _input(event):
+	if event.is_action_pressed("debug_kill"):
+		die()
 func input_handler(DEBUG = false):
 	
 	if Input.is_action_pressed("DPAD-DOWN"):
@@ -220,7 +222,6 @@ func die():
 		game_over = true
 		Globals.reset_difficulty()
 		Globals.LAST_DIR = AIM.SOUTH
-
 		#Globals.HIGH_SCORE = 0
 	else:
 		Globals.LAST_DIR = aim_dir
@@ -309,7 +310,7 @@ func _on_respawn_timer_timeout():
 	if !game_over:
 		owner.get_tree().reload_current_scene()
 	else:
-		owner.get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+		SceneTransition.game_over()
 
 func _on_north_anim_animation_finished():
 	north_anim.visible = false

@@ -1,7 +1,8 @@
 extends Node
 
-# How many scores are on the high score list
+# How many scores are allowed the high score list
 const ENTRY_LIMIT : int = 10
+# How many names are currently in the list.
 var num_entries : int = 0
 
 var read_score_file : FileAccess
@@ -16,15 +17,16 @@ var sorted_names : Array[String] = []
 
 func _ready():
 	#debug_save_system()
-	initialize_list()
-	check_new_score("BOOB", 1000)
-	check_new_score("BUTTO", 1200)
-	check_new_score("CORN", 4000)
-	check_new_score("B0O", 2200)
-	check_new_score("BOWL", 1040)
-	check_new_score("BBL", 1200)
-	check_new_score("BONK", 1230)
-	check_new_score("THRO", 1205)
+	#initialize_list()
+	build_scores()
+	#check_new_score("BOOB", 1000)
+	#check_new_score("BUTTO", 1200)
+	#check_new_score("CORN", 4000)
+	#check_new_score("B0O", 2200)
+	#check_new_score("BOWL", 1040)
+	#check_new_score("BBL", 1200)
+	#check_new_score("BONK", 1230)
+	#check_new_score("THRO", 1205)
 	print_save_state()
 	pass
 
@@ -88,28 +90,36 @@ func initialize_list():
 					# Couldn't add, not enough space.
 					pass
 	#print(sorted_names)
-
+# A version of the initialize_list() function that uses built in functions in its algorithm.
 func build_scores():
 	# Parse current saved scores
 	read_score_file = FileAccess.open("res://saves/score_debug.json", FileAccess.READ)
-	## Including this line messes things up, I think i can only write and read to one file before closing.
-	#write_score_file = FileAccess.open("res://saves/score_debug.json", FileAccess.WRITE)
-	
 	var json_scores = JSON.new()
 	json_scores.parse(read_score_file.get_line())
 	var score_data = json_scores.data
 	# Add each name and score to a dictionary.
 	for entry in score_data:
-		#print(entry)
-		#print(score_data[str(entry)])
 		var score_name = str(entry)
 		var score_value = int(score_data[score_name])
-		check_new_score(score_name,score_value)
-	pass
+		check_file_score(score_name,score_value)
 	
-#TODO: Try to make score initialization use these functions.
-# Checks to see if a new score coming in can be added to the High Scores list.
-func check_new_score(initials: String, score : int):
+# Checks to see if a new score coming in should be added to the High Scores list.
+func check_player_score(score : int):
+	if num_entries > 0:
+		# Is the new score greater than the lowest score on our high score list?
+		if high_scores_dict[sorted_names.back()] < score:
+			SceneTransition.score_entry()
+		elif num_entries < ENTRY_LIMIT:
+			# If the new score is lower than our lowest score, add it to the list at the end.
+			SceneTransition.score_entry()
+		else:
+			# New score is not good enough to add
+			SceneTransition.score_list()
+			pass
+	else:
+		SceneTransition.score_entry()
+		
+func check_file_score(initials: String, score : int):
 	if num_entries > 0:
 		# Is the new score greater than the lowest score on our high score list?
 		if high_scores_dict[sorted_names.back()] < score:
@@ -122,7 +132,6 @@ func check_new_score(initials: String, score : int):
 			pass
 	else:
 		add_score(initials, score)
-
 # Adds new name and high score to list.
 func add_score(initials : String, score : int):
 	if num_entries > 0:
@@ -158,3 +167,13 @@ func add_score(initials : String, score : int):
 func print_save_state():
 	print(high_scores_dict)
 	print(sorted_names)
+
+func write_scores_to_file():
+	read_score_file.close()
+	write_score_file = FileAccess.open("res://saves/score_debug.json", FileAccess.WRITE)
+	var high_score_JSON = JSON.stringify(high_scores_dict)
+	write_score_file.store_line(high_score_JSON)
+	write_score_file.close()
+	read_score_file = FileAccess.open("res://saves/score_debug.json", FileAccess.READ)
+	
+	pass

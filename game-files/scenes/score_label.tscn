@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkb86fs451s5c"]
+
+[ext_resource type="FontFile" uid="uid://dvudd0okjw3ad" path="res://tilesets/med_font_2.png" id="1_rkbmc"]
+[ext_resource type="Script" uid="uid://b23alecr7v34i" path="res://scripts/score_label.gd" id="2_83l75"]
+
+[node name="Score Label" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_rkbmc")
+script = ExtResource("2_83l75")

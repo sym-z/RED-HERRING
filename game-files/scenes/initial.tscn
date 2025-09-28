@@ -1,15 +1,32 @@
-[gd_scene format=3 uid="uid://byss4cejlocok"]
+[gd_scene load_steps=5 format=3 uid="uid://byss4cejlocok"]
 
-[node name="Initial" type="Label"]
+[ext_resource type="Theme" uid="uid://064arhy1k4mb" path="res://theme/high_score_label.tres" id="1_rjwfq"]
+[ext_resource type="Script" uid="uid://pwnelbkeyg38" path="res://scripts/initial.gd" id="2_bpj8y"]
+[ext_resource type="Texture2D" uid="uid://cixy3niyfsxg2" path="res://sprites/up_arrow.png" id="2_m8npa"]
+[ext_resource type="Texture2D" uid="uid://illy2we236hh" path="res://sprites/down_arrow.png" id="3_bpj8y"]
+
+[node name="Initial" type="Label" node_paths=PackedStringArray("up_arrow", "down_arrow")]
 offset_right = 40.0
 offset_bottom = 23.0
+theme = ExtResource("1_rjwfq")
+text = "X"
+script = ExtResource("2_bpj8y")
+up_arrow = NodePath("Up Arrow")
+down_arrow = NodePath("Down Arrow")
 
 [node name="Up Arrow" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1.0
+offset_top = -16.0
+offset_right = 16.0
+texture = ExtResource("2_m8npa")
 
 [node name="Down Arrow" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1.0
+offset_top = 16.0
+offset_right = 16.0
+offset_bottom = 32.0
+texture = ExtResource("3_bpj8y")

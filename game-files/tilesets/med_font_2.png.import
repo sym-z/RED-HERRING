@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://dvudd0okjw3ad"
+path="res://.godot/imported/med_font_2.png-d6f28814147185b6a5f1d877d8ec39a8.fontdata"
+
+[deps]
+
+source_file="res://tilesets/med_font_2.png"
+dest_files=["res://.godot/imported/med_font_2.png-d6f28814147185b6a5f1d877d8ec39a8.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("\'A\'-\'Z\'", "\'0\'-\'9\'", "\'.\'", "\'-\'", "\'_\'", "\'!\'", "\'?\'", "\':\'", "\'/\'", "\'\\\'", "\'%\'", "\'$\'", "\' \'")
+kerning_pairs=PackedStringArray()
+columns=47
+rows=1
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2

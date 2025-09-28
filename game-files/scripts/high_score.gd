@@ -7,6 +7,7 @@ extends Control
 
 @export_category("Submit Label")
 @export var submit : Label
+# Each initial label
 var label_arr : Array[Label] = []
 
 var char_dict : Dictionary[int,String] = {
@@ -46,15 +47,18 @@ var char_dict : Dictionary[int,String] = {
 	33: '7',
 	34: '8',
 	35: '9',
-	36: '!',
-	37: '?',
-	38: '.'
+	36: '.',
+	37: '-',
+	38: '_',
+	39: '!',
+	40: '?',
 }
 # Char dict encoding of initials
 var initials : Array[int] = [0,0,0]
 
-
+# Which selection out of initials and submit button we are selecting
 var curr_selection : int = 0
+# What label we are selecting
 var curr_label : Label 
 
 var total_chars : int = char_dict.keys().size()
@@ -75,6 +79,8 @@ func _input(event: InputEvent) -> void:
 		select_left()
 	elif event.is_action_pressed("DPAD-RIGHT"):
 		select_right()
+	elif event.is_action_pressed("A") or event.is_action_pressed("B") or event.is_action_pressed("START"):
+		choice_selection()
 	
 func increase_char():
 	if curr_selection != SELECTIONS.SUBMIT:
@@ -91,13 +97,14 @@ func decrease_char():
 	
 func select_left():
 	curr_selection -= 1
-	if curr_selection <= 0:
+	if curr_selection < 0:
 		curr_selection = label_arr.size() - 1
 	curr_label = label_arr[curr_selection]
 	if curr_selection == SELECTIONS.SUBMIT:
 		label_arr[SELECTIONS.SUBMIT].text = "SELECTED"
 	else:
 		label_arr[SELECTIONS.SUBMIT].text = "DONE"
+	set_arrows()
 	
 func select_right():
 	curr_selection += 1
@@ -108,6 +115,38 @@ func select_right():
 		label_arr[SELECTIONS.SUBMIT].text = "SELECTED"
 	else:
 		label_arr[SELECTIONS.SUBMIT].text = "DONE"
+	set_arrows()
+
+# Reveals arrows over current selection
+func set_arrows():
+	init_1.set_arrow_vis(false)
+	init_2.set_arrow_vis(false)
+	init_3.set_arrow_vis(false)
+	match curr_selection:
+		SELECTIONS.INIT_1:
+			init_1.set_arrow_vis(true)
+			pass
+		SELECTIONS.INIT_2:
+			init_2.set_arrow_vis(true)
+			pass
+		SELECTIONS.INIT_3:
+			init_3.set_arrow_vis(true)
+			pass
+		SELECTIONS.SUBMIT:
+			pass
+
+# Player has finished setting initials and has hit submit. 
+func choice_selection():
+	if curr_selection == SELECTIONS.SUBMIT:
+		# SEND INFO TO SAVE SYSTEM
+		SaveSystem.add_score(initials_to_string(), Globals.GAME_OVER_SCORE)
+		#TODO: Overwrite score json
+		SaveSystem.write_scores_to_file()
+		# Send to list of high scores
+		SceneTransition.score_list()
+		pass
+
 func _ready():
 	label_arr = [init_1,init_2,init_3,submit]
 	curr_label = label_arr[curr_selection]
+	set_arrows()
