@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c6a3sijj4p3ar"]
+
+[ext_resource type="Shader" uid="uid://bwfcp4is6ll3x" path="res://shaders/dot.gdshader" id="1_7m5cc"]
+
+[resource]
+shader = ExtResource("1_7m5cc")
+shader_parameter/dot_size = 7.0
+shader_parameter/dot_contrast = 0.8
