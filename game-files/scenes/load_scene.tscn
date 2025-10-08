@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://btcpvgeh5c6un" path="res://sprites/red_herring_lvl1.png" id="4_3osbr"]
 [ext_resource type="Texture2D" uid="uid://bgtc7bvhdgwyn" path="res://sprites/red_herring_lvl2.png" id="5_e77e3"]
 [ext_resource type="Texture2D" uid="uid://crgd0prl84yc4" path="res://sprites/red_herring_lvl3.png" id="6_p8k0d"]
-[ext_resource type="Material" uid="uid://c6a3sijj4p3ar" path="res://shaders/dot_material.tres" id="7_o2b80"]
+[ext_resource type="PackedScene" uid="uid://dyuryhvnf20oe" path="res://scenes/shader_layer.tscn" id="7_o2b80"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p38ia"]
 atlas = ExtResource("3_7jiqu")
@@ -517,14 +517,6 @@ texture = ExtResource("5_e77e3")
 [node name="Back" type="Sprite2D" parent="Title"]
 texture = ExtResource("6_p8k0d")
 
-[node name="Shader Layer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="Shader Layer"]
-material = ExtResource("7_o2b80")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Shader Layer" parent="." instance=ExtResource("7_o2b80")]
 
 [connection signal="animation_finished" from="Intro" to="." method="_on_intro_animation_finished"]

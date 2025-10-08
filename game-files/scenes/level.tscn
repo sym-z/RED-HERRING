@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://spjloutlnuj4" path="res://audio/difficulty_raise.mp3" id="10_8gofh"]
 [ext_resource type="AudioStream" uid="uid://ct0u1emj07ow7" path="res://audio/level_music.mp3" id="11_h6wmr"]
 [ext_resource type="FontFile" uid="uid://dvudd0okjw3ad" path="res://tilesets/med_font_2.png" id="12_8iemx"]
-[ext_resource type="Material" uid="uid://c6a3sijj4p3ar" path="res://shaders/dot_material.tres" id="13_64w2a"]
+[ext_resource type="PackedScene" uid="uid://dyuryhvnf20oe" path="res://scenes/shader_layer.tscn" id="13_64w2a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s2qrt"]
 animations = [{
@@ -232,15 +232,7 @@ text = "SPECIAL READY!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Shader Layer" type="CanvasLayer" parent="."]
-
-[node name="Dot Shader" type="ColorRect" parent="Shader Layer"]
-material = ExtResource("13_64w2a")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Shader Layer" parent="." instance=ExtResource("13_64w2a")]
 
 [connection signal="im_dead" from="Player" to="." method="_on_good_guy_im_dead"]
 [connection signal="use_special" from="Player" to="." method="_on_player_use_special"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b1obfcxhn54mx"]
+[gd_scene load_steps=14 format=3 uid="uid://b1obfcxhn54mx"]
 
 [ext_resource type="Script" uid="uid://vaw41be4kt3s" path="res://scripts/start_scene.gd" id="1_0uf1s"]
 [ext_resource type="Texture2D" uid="uid://bi823ox4itnyp" path="res://sprites/title-background.png" id="2_ejq85"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://j6kod6nrscow" path="res://sprites/how_to_text.png" id="6_j014b"]
 [ext_resource type="AudioStream" uid="uid://cw5itur43545v" path="res://audio/menu_move.mp3" id="6_l0e3e"]
 [ext_resource type="Texture2D" uid="uid://c8jkbndmmnb8m" path="res://sprites/controls.png" id="6_p7dik"]
+[ext_resource type="PackedScene" uid="uid://dyuryhvnf20oe" path="res://scenes/shader_layer.tscn" id="12_o01gw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k488e"]
 animations = [{
@@ -114,3 +115,5 @@ parameters/looping = true
 
 [node name="Menu Pick Noise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_l0e3e")
+
+[node name="Shader Layer" parent="." instance=ExtResource("12_o01gw")]
