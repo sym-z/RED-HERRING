@@ -5,9 +5,6 @@ const ENTRY_LIMIT : int = 10
 # How many names are currently in the list.
 var num_entries : int = 0
 
-var read_score_file : FileAccess
-
-var write_score_file : FileAccess
 
 # What the file will be loaded into, and saved from. This is used to make manipulating the list easier.
 var high_scores_dict : Dictionary[String, int] = {}
@@ -16,86 +13,49 @@ var high_scores_dict : Dictionary[String, int] = {}
 var sorted_names : Array[String] = []
 
 func _ready():
-	#debug_save_system()
-	#initialize_list()
+	LocalStorage.set_item("TEST", "JACKIE")
+	print(LocalStorage.get_item("TEST"))
 	build_scores()
-	#check_new_score("BOOB", 1000)
-	#check_new_score("BUTTO", 1200)
-	#check_new_score("CORN", 4000)
-	#check_new_score("B0O", 2200)
-	#check_new_score("BOWL", 1040)
-	#check_new_score("BBL", 1200)
-	#check_new_score("BONK", 1230)
-	#check_new_score("THRO", 1205)
-	print_save_state()
-	pass
 
-func debug_save_system():
-	# SAVE
-	var score_debug = {
-		"ASS" : 32,
-		"POOP" : 420,
-	}
-	var score_debug_JSON = JSON.stringify(score_debug)
-	var write_score_debug = FileAccess.open("res://saves/score_debug.json", FileAccess.WRITE)
-	write_score_debug.store_line(score_debug_JSON)
-	write_score_debug.close()
-	# LOAD
-	var read_score_debug = FileAccess.open("res://saves/score_debug.json", FileAccess.READ)
-	var json = JSON.new()
-	var parse_result = json.parse(read_score_debug.get_line())
-	var node_data = json.data
-	print(node_data)
-	read_score_debug.close()
 
 # Counts entries, and loads variables.
 func initialize_list():
-	# Parse current saved scores
-	read_score_file = FileAccess.open("res://saves/score_debug.json", FileAccess.READ)
-	## Including this line messes things up, I think i can only write and read to one file before closing.
-	#write_score_file = FileAccess.open("res://saves/score_debug.json", FileAccess.WRITE)
-	
 	var json_scores = JSON.new()
-	json_scores.parse(read_score_file.get_line())
+	json_scores.parse(LocalStorage.get_item("scores"))
 	var score_data = json_scores.data
 	# Add each name and score to a dictionary.
 	for entry in score_data:
-		#print(entry)
-		#print(score_data[str(entry)])
 		var score_name = str(entry)
 		var score_value = int(score_data[score_name])
 		high_scores_dict[score_name] = score_value
 		num_entries += 1
 	
 	# Build array of scorers sorted by score level.
-	#print("KEYS: ", high_scores_dict.keys())
+	var blah = JSON.new()
+	blah.parse(LocalStorage.get_item("sorted"))
+	sorted_names = blah.data
 	for key in high_scores_dict.keys():
 		if sorted_names.size() == 0:
 			sorted_names.append(key)
-			#print("ADDING TO ZERO: ", key)
 		else:
 			var size_before : int = sorted_names.size()
 			for i in range(sorted_names.size()):
 				var comparison_entry = sorted_names[i]
 				if high_scores_dict[comparison_entry] <= high_scores_dict[key]:
 					sorted_names.insert(i,key)
-					#print("INSERTING IN PLACE: ", key)
 					break
 			if size_before == sorted_names.size():
 				if sorted_names.size() < ENTRY_LIMIT:
 					# List is less than ENTRY_LIMIT, just append to the end.
 					sorted_names.append(key)
-					#print("ADDING ANYWAY: ", key)
 				else:
 					# Couldn't add, not enough space.
 					pass
-	#print(sorted_names)
 # A version of the initialize_list() function that uses built in functions in its algorithm.
 func build_scores():
 	# Parse current saved scores
-	read_score_file = FileAccess.open("res://saves/score_debug.json", FileAccess.READ)
 	var json_scores = JSON.new()
-	json_scores.parse(read_score_file.get_line())
+	json_scores.parse(LocalStorage.get_item("scores"))
 	var score_data = json_scores.data
 	# Add each name and score to a dictionary.
 	for entry in score_data:
@@ -163,17 +123,9 @@ func add_score(initials : String, score : int):
 		high_scores_dict[initials] = score
 		sorted_names.append(initials)
 		num_entries += 1
+	LocalStorage.set_item("sorted", JSON.stringify(sorted_names))
 
-func print_save_state():
-	print(high_scores_dict)
-	print(sorted_names)
 
 func write_scores_to_file():
-	read_score_file.close()
-	write_score_file = FileAccess.open("res://saves/score_debug.json", FileAccess.WRITE)
 	var high_score_JSON = JSON.stringify(high_scores_dict)
-	write_score_file.store_line(high_score_JSON)
-	write_score_file.close()
-	read_score_file = FileAccess.open("res://saves/score_debug.json", FileAccess.READ)
-	
-	pass
+	LocalStorage.set_item("scores", high_score_JSON)

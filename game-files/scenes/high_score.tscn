@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ctaseihks685x"]
 
-[ext_resource type="Script" uid="uid://c5qajprmqxwnm" path="res://scripts/high_score.gd" id="1_7k23f"]
+[ext_resource type="Script" path="res://scripts/high_score.gd" id="1_7k23f"]
 [ext_resource type="PackedScene" uid="uid://byss4cejlocok" path="res://scenes/initial.tscn" id="2_qrrcb"]
 [ext_resource type="Theme" uid="uid://064arhy1k4mb" path="res://theme/high_score_label.tres" id="3_uy73o"]
 

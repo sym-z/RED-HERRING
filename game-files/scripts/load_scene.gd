@@ -22,6 +22,7 @@ var srt_but : bool = false
 ## Make the intro unskippable
 var CAN_MOVE : bool = false
 func _ready():
+	#SaveSystem.debug_save_system()
 	pass 
 
 func _process(_delta):
