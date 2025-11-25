@@ -15,6 +15,6 @@ func _process(delta):
 	pass
 	
 func update_bar():
-	print(player.consecutive_hits/player.minimum_special_charge)
+	#print(player.consecutive_hits/player.minimum_special_charge)
 	value = min(100.,(float(player.consecutive_hits)/float(player.minimum_special_charge)) * 100.)
 	pass

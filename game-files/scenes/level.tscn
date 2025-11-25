@@ -95,7 +95,6 @@ offset_top = -68.0
 offset_right = 68.0
 offset_bottom = 68.0
 pivot_offset = Vector2(68, 68)
-value = 10.0
 fill_mode = 4
 texture_progress = ExtResource("7_82cfe")
 script = ExtResource("8_arp2o")

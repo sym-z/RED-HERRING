@@ -12,7 +12,7 @@ var high_scores_dict : Dictionary[String, int] = {}
 # Names of the top scorers, sorted by score.
 var sorted_names : Array[String] = []
 
-var use_local_storage : bool = false
+var use_local_storage : bool = true
 func _ready():
 	if use_local_storage == true:
 		print(LocalStorage.get_item("TEST"))
