@@ -46,6 +46,7 @@ signal im_dead
 @export var east_anim : AnimatedSprite2D
 @export var west_anim : AnimatedSprite2D
 
+
 #region Load Audio
 var bass1 : AudioStream = preload("uid://cyjwha2w17whm")
 var bass2 : AudioStream = preload("uid://dtnjo6i7j4ukt")

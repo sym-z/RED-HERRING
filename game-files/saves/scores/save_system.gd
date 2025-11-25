@@ -15,7 +15,6 @@ var sorted_names : Array[String] = []
 var use_local_storage : bool = false
 func _ready():
 	if use_local_storage == true:
-		LocalStorage.set_item("TEST", "JACKIE")
 		print(LocalStorage.get_item("TEST"))
 		build_scores()
 

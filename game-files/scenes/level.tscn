@@ -1,13 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://d164o0t7vod04"]
+[gd_scene load_steps=20 format=3 uid="uid://d164o0t7vod04"]
 
 [ext_resource type="Script" uid="uid://dxrp4mtc474qc" path="res://scripts/level.gd" id="1_t1rx8"]
 [ext_resource type="Texture2D" uid="uid://b7cr4mssud7j0" path="res://sprites/life_can.png" id="2_8iemx"]
 [ext_resource type="FontFile" uid="uid://ddp7ms5o882hh" path="res://tilesets/large.png" id="3_64w2a"]
 [ext_resource type="FontFile" uid="uid://c3ogr0b34lgr" path="res://tilesets/small.png" id="4_fpun6"]
+[ext_resource type="Shader" uid="uid://bdpmupagx81vv" path="res://shaders/progress_bar.gdshader" id="5_arp2o"]
 [ext_resource type="Script" uid="uid://cbb0r8irdlt1j" path="res://scripts/Tween.gd" id="5_wc255"]
 [ext_resource type="Texture2D" uid="uid://c4nehn781r68g" path="res://sprites/background_final.png" id="6_arp2o"]
+[ext_resource type="Texture2D" uid="uid://d0jq577a6tl0x" path="res://sprites/special_bar2.png" id="7_82cfe"]
 [ext_resource type="Texture2D" uid="uid://dfj4l37vw4fiq" path="res://sprites/title_2.png" id="7_ux5qa"]
 [ext_resource type="PackedScene" uid="uid://cf6ar5dxqu7h2" path="res://scenes/player.tscn" id="8_82cfe"]
+[ext_resource type="Script" uid="uid://ifj5l8fjsdsl" path="res://scripts/special_bar.gd" id="8_arp2o"]
 [ext_resource type="Texture2D" uid="uid://drss4k4hdm2rj" path="res://sprites/dummy-enemy.png" id="9_gunhw"]
 [ext_resource type="AudioStream" uid="uid://spjloutlnuj4" path="res://audio/difficulty_raise.mp3" id="10_8gofh"]
 [ext_resource type="AudioStream" uid="uid://ct0u1emj07ow7" path="res://audio/level_music.mp3" id="11_h6wmr"]
@@ -24,6 +27,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gunhw"]
+shader = ExtResource("5_arp2o")
 
 [sub_resource type="Curve2D" id="Curve2D_bbhxf"]
 _data = {
@@ -52,6 +58,8 @@ combo_text = NodePath("HUD Layer/Play Screen Container/Combo Container/Combo Lab
 special_text = NodePath("HUD Layer/Play Screen Container/Special Notification/Special Label")
 difficulty_noise = NodePath("Difficulty Bump")
 music = NodePath("Music")
+metadata/_edit_vertical_guides_ = [0.0]
+metadata/_edit_horizontal_guides_ = [576.0]
 
 [node name="Tween" type="Control" parent="." node_paths=PackedStringArray("tex")]
 layout_mode = 3
@@ -63,6 +71,7 @@ script = ExtResource("5_wc255")
 tex = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="Tween"]
+z_index = -1
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 240.0
@@ -77,6 +86,20 @@ offset = Vector2(96, 72)
 [node name="Player" parent="." node_paths=PackedStringArray("bg") instance=ExtResource("8_82cfe")]
 position = Vector2(352, 276)
 bg = NodePath("../Tween")
+
+[node name="Special Bar" type="TextureProgressBar" parent="Player" node_paths=PackedStringArray("player")]
+z_index = -1
+material = SubResource("ShaderMaterial_gunhw")
+offset_left = -68.0
+offset_top = -68.0
+offset_right = 68.0
+offset_bottom = 68.0
+pivot_offset = Vector2(68, 68)
+value = 10.0
+fill_mode = 4
+texture_progress = ExtResource("7_82cfe")
+script = ExtResource("8_arp2o")
+player = NodePath("..")
 
 [node name="Markers" type="Node2D" parent="."]
 
@@ -131,7 +154,7 @@ parameters/looping = true
 layout_mode = 3
 anchors_preset = 0
 offset_right = 160.0
-offset_bottom = 160.0
+offset_bottom = 144.0
 scale = Vector2(4, 4)
 
 [node name="HudBlock" type="Sprite2D" parent="HUD Layer/HUD"]
