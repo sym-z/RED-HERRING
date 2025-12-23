@@ -269,6 +269,12 @@ autoplay = "birth"
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_ojjiy")
 
+[node name="Hurt Box" type="Area2D" parent="Guy" groups=["Enemies"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guy/Hurt Box"]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_cln5v")
+
 [node name="Creep Timer" type="Timer" parent="."]
 autostart = true
 
@@ -278,12 +284,6 @@ one_shot = true
 [node name="Death Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_ui4mm")
 volume_db = -3.0
-
-[node name="Hurt Box" type="Area2D" parent="." groups=["Enemies"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt Box"]
-position = Vector2(0.5, -2)
-shape = SubResource("RectangleShape2D_cln5v")
 
 [connection signal="animation_finished" from="Guy/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Creep Timer" to="." method="_on_creep_timer_timeout"]
