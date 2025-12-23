@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://d2dk6axl8a5gy"]
+[gd_scene load_steps=50 format=3 uid="uid://d2dk6axl8a5gy"]
 
 [ext_resource type="Script" uid="uid://b0efurlcwfr8g" path="res://scripts/tentacle_enemy.gd" id="1_kco5d"]
 [ext_resource type="Texture2D" uid="uid://c7ks6jjguvf0a" path="res://tilesets/tentacle_enemy_birth.png" id="2_p61fy"]
@@ -314,6 +314,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_nuiqs"]
 radius = 6.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kco5d"]
+size = Vector2(64, 343)
+
 [node name="Tentacle Enemy" type="Node2D" node_paths=PackedStringArray("sprite", "hit_box", "death_sound") groups=["Enemies"]]
 script = ExtResource("1_kco5d")
 sprite = NodePath("AnimatedSprite2D")
@@ -325,7 +328,7 @@ position = Vector2(0, 35)
 sprite_frames = SubResource("SpriteFrames_xfng4")
 autoplay = "birth"
 
-[node name="Hit Box" type="Area2D" parent="." groups=["Enemies"]]
+[node name="Hit Box" type="Area2D" parent="."]
 position = Vector2(0, -91)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hit Box"]
@@ -338,5 +341,11 @@ one_shot = true
 [node name="Death Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_wm76u")
 volume_db = -3.0
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["Enemies"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(3, 44.5)
+shape = SubResource("RectangleShape2D_kco5d")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

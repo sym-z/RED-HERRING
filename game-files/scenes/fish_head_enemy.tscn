@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c2ajpu1p3djgq"]
+[gd_scene load_steps=40 format=3 uid="uid://c2ajpu1p3djgq"]
 
 [ext_resource type="Script" uid="uid://mvu117vt8ojo" path="res://scripts/fish_head_enemy.gd" id="1_cln5v"]
 [ext_resource type="Texture2D" uid="uid://cvrktqn7j284k" path="res://tilesets/fish_head_enemy_head_birth.png" id="2_qu4jm"]
@@ -244,6 +244,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojjiy"]
 size = Vector2(64, 60)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cln5v"]
+size = Vector2(69, 66)
+
 [node name="Fish Head Enemy" type="Node2D" node_paths=PackedStringArray("hit_box", "body", "creep_clock", "sprite", "death_sound") groups=["Enemies"]]
 script = ExtResource("1_cln5v")
 hit_box = NodePath("Guy/Hit Box")
@@ -260,7 +263,7 @@ death_sound = NodePath("Death Sound")
 sprite_frames = SubResource("SpriteFrames_bipq6")
 autoplay = "birth"
 
-[node name="Hit Box" type="Area2D" parent="Guy" groups=["Enemies"]]
+[node name="Hit Box" type="Area2D" parent="Guy"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Guy/Hit Box"]
 position = Vector2(0, -2)
@@ -275,6 +278,12 @@ one_shot = true
 [node name="Death Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_ui4mm")
 volume_db = -3.0
+
+[node name="Hurt Box" type="Area2D" parent="." groups=["Enemies"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt Box"]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_cln5v")
 
 [connection signal="animation_finished" from="Guy/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Creep Timer" to="." method="_on_creep_timer_timeout"]
