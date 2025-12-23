@@ -38,6 +38,7 @@ var gun_arr
 var dead : bool = false
 ## For the Life UI change
 signal im_dead 
+signal combo_loss
 @export var respawn_clock : Timer
 
 ### Animations ###
@@ -282,6 +283,7 @@ func fire():
 		else:
 			consecutive_hits = 0
 			combo_updated.emit()
+			combo_loss.emit()
 			print("Special Reset")
 			pass
 

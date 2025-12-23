@@ -82,6 +82,7 @@ func _ready():
 	player.connect("combo_updated", update_combo)
 	player.connect("special_ready", special_notification)
 	player.connect("use_special", hide_special_notification)
+	player.connect("combo_loss", hide_special_notification)
 	update_combo()
 	special_text.visible = false
 
