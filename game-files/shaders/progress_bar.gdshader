@@ -1,13 +1,13 @@
 shader_type canvas_item;
-
+uniform float speed = 10.;
 void vertex() {
-	VERTEX.x += sin(TIME*10.);
-	VERTEX.y += cos(TIME*10.);
+	VERTEX.x += sin(TIME*speed);
+	VERTEX.y += cos(TIME*speed);
 	// Called for every vertex the material is visible on.
 }
 
 void fragment() {
-	COLOR.rgb *= abs(cos(TIME*10.)) + 1.0;
+	COLOR.rgb *= abs(cos(TIME*(speed/2.))) + 1.0;
 	//COLOR.r *= abs(sin(TIME));
 	//COLOR.g *= abs(cos(TIME));
 	// Called for every pixel the material is visible on.

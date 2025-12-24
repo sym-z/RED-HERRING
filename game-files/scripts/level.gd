@@ -56,6 +56,7 @@ var total_spawns : int
 @export var combo_text : Label
 
 @export var special_text : Label
+@export var special_bar : TextureProgressBar
 @export_category("Audio")
 
 ## For catching difficulty signal, and playing a noise when the difficulty goes up
@@ -63,6 +64,8 @@ var total_spawns : int
 
 ## The music that plays in the level
 @export var music : AudioStreamPlayer2D
+
+var bar_mat 
 
 func _ready():
 	music.play()
@@ -79,12 +82,15 @@ func _ready():
 	DIR.EAST  : 0,
 	DIR.WEST  : 0
 	}
+	bar_mat = special_bar.material
+	print(bar_mat)
 	player.connect("combo_updated", update_combo)
 	player.connect("special_ready", special_notification)
 	player.connect("use_special", hide_special_notification)
 	player.connect("combo_loss", hide_special_notification)
 	update_combo()
 	special_text.visible = false
+
 
 
 func position_actors():
@@ -216,12 +222,13 @@ func _on_enemy_inst_diff_bump():
 func _on_player_use_special() -> void:
 	for child in parent_node.get_children(true):
 		if child.is_in_group("Enemies"):
-			player.got_kill(child.hit_box)
+			player.got_kill(child.hit_box, true)
 	for eyeball in path.get_children(true):
 		if eyeball.is_in_group("Enemies"):
-			player.got_kill(eyeball.hit_box)
+			player.got_kill(eyeball.hit_box, true)
 
 func update_combo():
+	bar_mat.set_shader_parameter("speed", bar_mat.get_shader_parameter("speed") + float(player.consecutive_hits) * 10)
 	if Globals.highest_combo < player.consecutive_hits:
 		Globals.highest_combo = player.consecutive_hits
 	combo_text.text = "COMBO: " + str(player.consecutive_hits) +" HIGHEST: " + str(Globals.highest_combo)

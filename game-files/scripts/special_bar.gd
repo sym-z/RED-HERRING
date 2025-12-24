@@ -11,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	rotation += rotation_speed * delta
+	rotation += rotation_speed * delta * player.consecutive_hits
 	pass
 	
 func update_bar():

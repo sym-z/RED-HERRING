@@ -69,6 +69,9 @@ var vox3 : AudioStream = preload("uid://ttrabb3rq63h")
 ## Plays when the character dies
 @export var death_sound : AudioStreamPlayer2D
 
+@export var special_use_sfx : AudioStreamPlayer2D
+@export var special_ready_sfx : AudioStreamPlayer2D
+
 var basses = []
 var hihats = []
 var snares = []
@@ -89,7 +92,7 @@ var game_over : bool = false
 var consecutive_hits : int = 0
 signal combo_updated
 ## How many hits are necessary before using a special attack
-@export var minimum_special_charge : int = 10
+@export var minimum_special_charge : int = 7
 signal special_ready
 signal use_special
 func _ready():
@@ -287,7 +290,7 @@ func fire():
 			print("Special Reset")
 			pass
 
-func got_kill(target):
+func got_kill(target, from_special:bool = false):
 # Damage Enemy
 	print("KILLED ", target)
 	
@@ -301,8 +304,11 @@ func got_kill(target):
 	if Globals.SCORE > Globals.HIGH_SCORE:
 		Globals.HIGH_SCORE = Globals.SCORE
 	h_score_text.text = "%010d" % Globals.HIGH_SCORE
-	consecutive_hits += 1
+	if from_special == false:
+		consecutive_hits += 1
 	if consecutive_hits >= minimum_special_charge:
+		print("PLAY READY")
+		special_ready_sfx.play()
 		special_ready.emit()
 	combo_updated.emit()
 	#print("Special Level: ", consecutive_hits)
@@ -356,6 +362,8 @@ func load_sounds():
 
 func special_attack():
 	if consecutive_hits >= minimum_special_charge:
-		use_special.emit()
 		consecutive_hits = 0
+		special_use_sfx.play()
+		use_special.emit()
+		
 		combo_updated.emit()

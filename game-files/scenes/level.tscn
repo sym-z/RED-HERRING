@@ -30,6 +30,7 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gunhw"]
 shader = ExtResource("5_arp2o")
+shader_parameter/speed = 10.0
 
 [sub_resource type="Curve2D" id="Curve2D_bbhxf"]
 _data = {
@@ -37,7 +38,7 @@ _data = {
 }
 point_count = 86
 
-[node name="Level One" type="Node2D" node_paths=PackedStringArray("parent_node", "player", "Nmark", "Smark", "Emark", "Wmark", "spawn_clock", "path", "score_text", "h_score_text", "LIFE_1", "LIFE_2", "LIFE_3", "combo_text", "special_text", "difficulty_noise", "music")]
+[node name="Level One" type="Node2D" node_paths=PackedStringArray("parent_node", "player", "Nmark", "Smark", "Emark", "Wmark", "spawn_clock", "path", "score_text", "h_score_text", "LIFE_1", "LIFE_2", "LIFE_3", "combo_text", "special_text", "special_bar", "difficulty_noise", "music")]
 script = ExtResource("1_t1rx8")
 parent_node = NodePath(".")
 player = NodePath("Player")
@@ -56,6 +57,7 @@ LIFE_2 = NodePath("HUD Layer/Life Icons/VBoxContainer/Life2")
 LIFE_3 = NodePath("HUD Layer/Life Icons/VBoxContainer/Life3")
 combo_text = NodePath("HUD Layer/Play Screen Container/Combo Container/Combo Label")
 special_text = NodePath("HUD Layer/Play Screen Container/Special Notification/Special Label")
+special_bar = NodePath("Player/Special Bar")
 difficulty_noise = NodePath("Difficulty Bump")
 music = NodePath("Music")
 metadata/_edit_vertical_guides_ = [0.0]
@@ -232,6 +234,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Combo Container" type="MarginContainer" parent="HUD Layer/Play Screen Container"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 510
 

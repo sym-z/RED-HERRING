@@ -1,10 +1,12 @@
-[gd_scene load_steps=39 format=3 uid="uid://cf6ar5dxqu7h2"]
+[gd_scene load_steps=41 format=3 uid="uid://cf6ar5dxqu7h2"]
 
 [ext_resource type="Script" uid="uid://cs1xgeb6xj8qg" path="res://scripts/player.gd" id="1_q0ltr"]
 [ext_resource type="Texture2D" uid="uid://e7ikq0li4bug" path="res://tilesets/player_character_death.png" id="2_iq05d"]
 [ext_resource type="Texture2D" uid="uid://dnr4kijueocql" path="res://tilesets/player_character_shot.png" id="2_sf58l"]
 [ext_resource type="Texture2D" uid="uid://cf2p8tb3cae4f" path="res://tilesets/fish_shot.png" id="4_uugo7"]
 [ext_resource type="AudioStream" uid="uid://cbjb2to8gw7m7" path="res://audio/death_sound.mp3" id="5_qkhj2"]
+[ext_resource type="AudioStream" uid="uid://beg3sbc72fqja" path="res://audio/new_audio/special_use_0.mp3" id="6_fjrip"]
+[ext_resource type="AudioStream" uid="uid://dslfg4g5r1ix3" path="res://audio/new_audio/special_ready_0_trim.mp3" id="7_smehm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("2_iq05d")
@@ -240,7 +242,7 @@ animations = [{
 "speed": 21.0
 }]
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("NORTH_GUN", "SOUTH_GUN", "EAST_GUN", "WEST_GUN", "hurtbox", "sprite", "respawn_clock", "north_anim", "south_anim", "east_anim", "west_anim", "speaker", "death_sound")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("NORTH_GUN", "SOUTH_GUN", "EAST_GUN", "WEST_GUN", "hurtbox", "sprite", "respawn_clock", "north_anim", "south_anim", "east_anim", "west_anim", "speaker", "death_sound", "special_use_sfx", "special_ready_sfx")]
 script = ExtResource("1_q0ltr")
 NORTH_GUN = NodePath("Firing Directions/NORTH")
 SOUTH_GUN = NodePath("Firing Directions/SOUTH")
@@ -256,6 +258,8 @@ east_anim = NodePath("Gun Animations/East Anim")
 west_anim = NodePath("Gun Animations/West Anim")
 speaker = NodePath("Fire Sound")
 death_sound = NodePath("Death Sound")
+special_use_sfx = NodePath("Special Use")
+special_ready_sfx = NodePath("Special Ready")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v3ou4")
@@ -328,6 +332,12 @@ bus = &"fire"
 
 [node name="Death Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_qkhj2")
+
+[node name="Special Use" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_fjrip")
+
+[node name="Special Ready" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_smehm")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
