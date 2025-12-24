@@ -49,21 +49,21 @@ signal combo_loss
 
 
 #region Load Audio
-var bass1 : AudioStream = preload("uid://cyjwha2w17whm")
-var bass2 : AudioStream = preload("uid://dtnjo6i7j4ukt")
-var bass3 : AudioStream = preload("uid://by51ly27piauc")
+var bass1 : AudioStream = preload("uid://da0x4qt88a2i4")
+var bass2 : AudioStream = preload("uid://olk5bsd5u72l")
+var bass3 : AudioStream = preload("uid://t1b7wjl5pxe3")
 
-var hihat1 : AudioStream = preload("uid://jxt6o03m6kx6")
-var hihat2 : AudioStream = preload("uid://bpmpek71nj05w")
-var hihat3 : AudioStream = preload("uid://b3igj4isoer1u")
+var hihat1 : AudioStream = preload("uid://ch838u1kwhhsh")
+var hihat2 : AudioStream = preload("uid://eifwxetklwni")
+var hihat3 : AudioStream = preload("uid://daio2gq5qx1bb")
 
-var snare1 : AudioStream= preload("uid://brt383pk05y5t")
-var snare2 : AudioStream = preload("uid://cbfp3ukjwgao3")
-var snare3 : AudioStream = preload("uid://dnres6fb30kbe")
+var snare1 : AudioStream= preload("uid://61r763n5n5cu")
+var snare2 : AudioStream = preload("uid://clvdh1gt8avhl")
+var snare3 : AudioStream = preload("uid://dnq3jwq40g8f7")
 
-var vox1 : AudioStream = preload("uid://clsi7r6ar6tjq")
-var vox2 : AudioStream = preload("uid://dj0xgv50wsadm")
-var vox3 : AudioStream = preload("uid://e6ajqmnwjjuw")
+var vox1 : AudioStream = preload("uid://qeb7e8yf0lj5")
+var vox2 : AudioStream = preload("uid://b4uadin66i8at")
+var vox3 : AudioStream = preload("uid://ttrabb3rq63h")
 #endregion
 @export var speaker : AudioStreamPlayer2D 
 ## Plays when the character dies

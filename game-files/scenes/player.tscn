@@ -324,6 +324,7 @@ flip_v = true
 
 [node name="Fire Sound" type="AudioStreamPlayer2D" parent="."]
 volume_db = -16.0
+bus = &"fire"
 
 [node name="Death Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_qkhj2")
