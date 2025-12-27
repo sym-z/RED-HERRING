@@ -81,11 +81,19 @@ func _input(event: InputEvent) -> void:
 		select_left()
 	elif event.is_action_pressed("DPAD-RIGHT"):
 		select_right()
-	elif event.is_action_pressed("A") or event.is_action_pressed("B") or event.is_action_pressed("START"):
+	elif event.is_action_pressed("A") or event.is_action_pressed("B"):
 		if curr_selection < SELECTIONS.SUBMIT:
 			select_right()
 		else:
 			choice_selection()
+	elif event.is_action_pressed("SELECT"):
+		select_right()
+	elif event.is_action_pressed("START"):
+		if curr_selection == SELECTIONS.SUBMIT:
+			choice_selection()
+		else:
+			while curr_selection < SELECTIONS.SUBMIT:
+				select_left()
 	
 func increase_char():
 	if curr_selection != SELECTIONS.SUBMIT:
@@ -106,9 +114,9 @@ func select_left():
 		curr_selection = label_arr.size() - 1
 	curr_label = label_arr[curr_selection]
 	if curr_selection == SELECTIONS.SUBMIT:
-		label_arr[SELECTIONS.SUBMIT].text = "DONE"
+		label_arr[SELECTIONS.SUBMIT].text = "DONE?"
 	else:
-		label_arr[SELECTIONS.SUBMIT].text = "    "
+		label_arr[SELECTIONS.SUBMIT].text = "     "
 	set_arrows()
 	
 func select_right():
@@ -117,9 +125,9 @@ func select_right():
 		curr_selection = 0
 	curr_label = label_arr[curr_selection]
 	if curr_selection == SELECTIONS.SUBMIT:
-		label_arr[SELECTIONS.SUBMIT].text = "DONE"
+		label_arr[SELECTIONS.SUBMIT].text = "DONE?"
 	else:
-		label_arr[SELECTIONS.SUBMIT].text = "    "
+		label_arr[SELECTIONS.SUBMIT].text = "     "
 	set_arrows()
 
 # Reveals arrows over current selection
