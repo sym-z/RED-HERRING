@@ -7,7 +7,7 @@ void vertex() {
 }
 
 void fragment() {
-	COLOR.rgb *= abs(cos(TIME*(speed/2.))) + 1.0;
+	COLOR.rgb *= abs(cos(TIME)) + 1.0;
 	//COLOR.r *= abs(sin(TIME));
 	//COLOR.g *= abs(cos(TIME));
 	// Called for every pixel the material is visible on.
