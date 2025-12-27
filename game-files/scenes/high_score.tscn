@@ -44,6 +44,6 @@ text = "A"
 [node name="Submit" type="Label" parent="CenterContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_uy73o")
-text = "DONE"
+text = "    "
 
 [node name="Shader Layer" parent="." instance=ExtResource("4_1jewx")]

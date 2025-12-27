@@ -64,6 +64,8 @@ var curr_label : Label
 var total_chars : int = char_dict.keys().size()
 
 enum SELECTIONS {INIT_1,INIT_2,INIT_3,SUBMIT}
+
+var debug : bool = false
 func initials_to_string() -> String:
 	var retval = ""
 	for letter in initials:
@@ -80,7 +82,10 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("DPAD-RIGHT"):
 		select_right()
 	elif event.is_action_pressed("A") or event.is_action_pressed("B") or event.is_action_pressed("START"):
-		choice_selection()
+		if curr_selection < SELECTIONS.SUBMIT:
+			select_right()
+		else:
+			choice_selection()
 	
 func increase_char():
 	if curr_selection != SELECTIONS.SUBMIT:
@@ -101,9 +106,9 @@ func select_left():
 		curr_selection = label_arr.size() - 1
 	curr_label = label_arr[curr_selection]
 	if curr_selection == SELECTIONS.SUBMIT:
-		label_arr[SELECTIONS.SUBMIT].text = "SELECTED"
-	else:
 		label_arr[SELECTIONS.SUBMIT].text = "DONE"
+	else:
+		label_arr[SELECTIONS.SUBMIT].text = "    "
 	set_arrows()
 	
 func select_right():
@@ -112,9 +117,9 @@ func select_right():
 		curr_selection = 0
 	curr_label = label_arr[curr_selection]
 	if curr_selection == SELECTIONS.SUBMIT:
-		label_arr[SELECTIONS.SUBMIT].text = "SELECTED"
-	else:
 		label_arr[SELECTIONS.SUBMIT].text = "DONE"
+	else:
+		label_arr[SELECTIONS.SUBMIT].text = "    "
 	set_arrows()
 
 # Reveals arrows over current selection
@@ -137,7 +142,7 @@ func set_arrows():
 
 # Player has finished setting initials and has hit submit. 
 func choice_selection():
-	if curr_selection == SELECTIONS.SUBMIT:
+	if curr_selection == SELECTIONS.SUBMIT and debug == false:
 		# SEND INFO TO SAVE SYSTEM
 		SaveSystem.add_score(initials_to_string(), Globals.GAME_OVER_SCORE)
 		#TODO: Overwrite score json
