@@ -308,7 +308,8 @@ func got_kill(target, from_special:bool = false):
 		consecutive_hits += 1
 	if consecutive_hits >= minimum_special_charge:
 		print("PLAY READY")
-		special_ready_sfx.play()
+		if consecutive_hits == minimum_special_charge:
+			special_ready_sfx.play()
 		special_ready.emit()
 	combo_updated.emit()
 	#print("Special Level: ", consecutive_hits)
