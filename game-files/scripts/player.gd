@@ -92,7 +92,7 @@ var game_over : bool = false
 var consecutive_hits : int = 0
 signal combo_updated
 ## How many hits are necessary before using a special attack
-@export var minimum_special_charge : int = 7
+@export var minimum_special_charge : int = 3
 signal special_ready
 signal use_special
 func _ready():
@@ -366,5 +366,5 @@ func special_attack():
 		consecutive_hits = 0
 		special_use_sfx.play()
 		use_special.emit()
-		
 		combo_updated.emit()
+		minimum_special_charge += 1
