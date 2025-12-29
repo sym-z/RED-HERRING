@@ -284,6 +284,7 @@ one_shot = true
 [node name="Death Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_ui4mm")
 volume_db = -3.0
+bus = &"enemy sounds"
 
 [connection signal="animation_finished" from="Guy/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Creep Timer" to="." method="_on_creep_timer_timeout"]

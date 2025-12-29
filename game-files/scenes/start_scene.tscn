@@ -111,9 +111,11 @@ centered = false
 [node name="Ambience" type="AudioStreamPlayer2D" parent="."]
 visible = false
 stream = ExtResource("5_qhdlg")
+bus = &"Music"
 parameters/looping = true
 
 [node name="Menu Pick Noise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_l0e3e")
+bus = &"ui"
 
 [node name="Shader Layer" parent="." instance=ExtResource("12_o01gw")]

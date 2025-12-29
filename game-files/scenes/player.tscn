@@ -332,12 +332,15 @@ bus = &"fire"
 
 [node name="Death Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_qkhj2")
+bus = &"death sound"
 
 [node name="Special Use" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_fjrip")
+bus = &"Special sounds"
 
 [node name="Special Ready" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_smehm")
+bus = &"Special sounds"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

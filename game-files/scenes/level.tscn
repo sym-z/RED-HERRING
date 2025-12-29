@@ -143,10 +143,12 @@ curve = SubResource("Curve2D_bbhxf")
 [node name="Difficulty Bump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_8gofh")
 volume_db = -12.0
+bus = &"Difficulty Bump"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_h6wmr")
 volume_db = -3.0
+bus = &"Difficulty Bump"
 parameters/looping = true
 
 [node name="HUD Layer" type="CanvasLayer" parent="."]

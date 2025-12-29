@@ -27,6 +27,7 @@ offset = Vector2(80, 72)
 
 [node name="Sting" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_dojo6")
+bus = &"ui"
 
 [node name="Scores" type="Control" parent="."]
 z_index = 101

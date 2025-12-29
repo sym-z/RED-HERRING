@@ -341,6 +341,7 @@ one_shot = true
 [node name="Death Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_wm76u")
 volume_db = -3.0
+bus = &"enemy sounds"
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["Enemies"]]
 
