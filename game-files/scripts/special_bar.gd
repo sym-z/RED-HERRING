@@ -35,6 +35,7 @@ func special_effect():
 	tween = create_tween()
 	tween.bind_node(self)
 	tween.tween_property(self,"scale",scale*5, 1.0)
+	tween.tween_property(self, "modulate", Color(1,1,1,0),0.2)
 	tween.tween_callback(reset_special_effect)
 	tween.play()
 	pass
@@ -42,6 +43,7 @@ func reset_special_effect():
 	if tween:
 		tween.kill()
 	scale = Vector2(1.0,1.0)
+	modulate = Color(1,1,1,1)
 	using_special = false
 	update_bar()
 	pass
