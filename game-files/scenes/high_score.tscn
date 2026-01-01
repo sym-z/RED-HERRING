@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctaseihks685x"]
+[gd_scene load_steps=8 format=3 uid="uid://ctaseihks685x"]
 
 [ext_resource type="Script" uid="uid://c5qajprmqxwnm" path="res://scripts/high_score.gd" id="1_7k23f"]
 [ext_resource type="PackedScene" uid="uid://byss4cejlocok" path="res://scenes/initial.tscn" id="2_qrrcb"]
+[ext_resource type="Texture2D" uid="uid://c4nehn781r68g" path="res://sprites/background_final.png" id="2_vbgfm"]
+[ext_resource type="StyleBox" uid="uid://jsi7l2mhayyb" path="res://theme/score_sb.tres" id="3_1ve1n"]
 [ext_resource type="Theme" uid="uid://064arhy1k4mb" path="res://theme/high_score_label.tres" id="3_uy73o"]
 [ext_resource type="PackedScene" uid="uid://dyuryhvnf20oe" path="res://scenes/shader_layer.tscn" id="4_1jewx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ve1n"]
+texture = ExtResource("2_vbgfm")
 
 [node name="High Score" type="Control" node_paths=PackedStringArray("init_1", "init_2", "init_3", "submit")]
 layout_mode = 3
@@ -13,10 +18,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7k23f")
-init_1 = NodePath("CenterContainer/HBoxContainer/Initial")
-init_2 = NodePath("CenterContainer/HBoxContainer/Initial2")
-init_3 = NodePath("CenterContainer/HBoxContainer/Initial3")
-submit = NodePath("CenterContainer/HBoxContainer/Submit")
+init_1 = NodePath("CenterContainer/PanelContainer/HBoxContainer/Initial")
+init_2 = NodePath("CenterContainer/PanelContainer/HBoxContainer/Initial2")
+init_3 = NodePath("CenterContainer/PanelContainer/HBoxContainer/Initial3")
+submit = NodePath("CenterContainer/PanelContainer/HBoxContainer/Submit")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1ve1n")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -26,24 +40,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_1ve1n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="Initial" parent="CenterContainer/HBoxContainer" instance=ExtResource("2_qrrcb")]
-layout_mode = 2
-text = "A"
-
-[node name="Initial2" parent="CenterContainer/HBoxContainer" instance=ExtResource("2_qrrcb")]
-layout_mode = 2
-text = "A"
-
-[node name="Initial3" parent="CenterContainer/HBoxContainer" instance=ExtResource("2_qrrcb")]
+[node name="Initial" parent="CenterContainer/PanelContainer/HBoxContainer" instance=ExtResource("2_qrrcb")]
 layout_mode = 2
 text = "A"
 
-[node name="Submit" type="Label" parent="CenterContainer/HBoxContainer"]
+[node name="Initial2" parent="CenterContainer/PanelContainer/HBoxContainer" instance=ExtResource("2_qrrcb")]
+layout_mode = 2
+text = "A"
+
+[node name="Initial3" parent="CenterContainer/PanelContainer/HBoxContainer" instance=ExtResource("2_qrrcb")]
+layout_mode = 2
+text = "A"
+
+[node name="Submit" type="Label" parent="CenterContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_uy73o")
-text = "     "
+text = "DONE?"
 
 [node name="Shader Layer" parent="." instance=ExtResource("4_1jewx")]

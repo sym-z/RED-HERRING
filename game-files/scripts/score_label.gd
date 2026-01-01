@@ -1,5 +1,5 @@
 extends Label
-@export var divider : String = "\t"
+@export var divider : String = "    "
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
