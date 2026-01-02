@@ -95,6 +95,12 @@ func check_file_score(initials: String, score : int):
 		add_score(initials, score)
 # Adds new name and high score to list.
 func add_score(initials : String, score : int):
+	### if high_scores_dict[initials] != null:
+		### if score > high_scores_dict[initials]:
+			### high_scores_dict[initials] = score
+		### else:
+			### continue;
+		### make the if statement below an elif
 	if num_entries > 0:
 		# Is new score the highest?
 		if score > high_scores_dict[sorted_names.front()]:
