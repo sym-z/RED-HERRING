@@ -66,8 +66,6 @@ var total_chars : int = char_dict.keys().size()
 enum SELECTIONS {INIT_1,INIT_2,INIT_3,SUBMIT}
 
 var debug : bool = false
-
-
 func initials_to_string() -> String:
 	var retval = ""
 	for letter in initials:
@@ -165,4 +163,3 @@ func _ready():
 	label_arr = [init_1,init_2,init_3,submit]
 	curr_label = label_arr[curr_selection]
 	set_arrows()
-	label_arr[SELECTIONS.SUBMIT].text = "     "
