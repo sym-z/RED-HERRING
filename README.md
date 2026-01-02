@@ -9,18 +9,26 @@
  - This game is a homage to an arcade game *Space Zap* by *Midway* in 1980
  - Made in Godot 4.3
 
-## How to play
-- Prevent the can in the center from being destroyed by attacking from four directions
-- The difficulty scales as you play, and keeps track of your high score
+# Controls
+- Aim Up
+  - W/UP ARROW
+- Aim Down
+  - S/DOWN ARROW
+- Aim Left
+  - S/DOWN ARROW
+- Aim Right
+  - D/RIGHT ARROW
+- Fire/Confirm
+  - Z/K
+  - X/L
+- Special Attack
+  - SPACE
+- Start/Confirm
+  - ENTER
+- Select
+  - SHIFT/TAB
 
-## Controls
-- DPAD/UP/DOWN/LEFT/RIGHT: Aim, choose menu option
-- A/B: Fire attack, make menu selection
-- SELECT: Move menu options
-- START: Start Game
+# Description
+RED HERRING V2 is an improvement on a game jam game I made with Rozy Dixon. It is an adaptation of the 1980 arcade game Space Zap!.  In RED HERRING, you control a tin of fish and must defend yourself against incoming tentacles, eyeballs and fish heads. 
 
-## Mappings for Keyboard
-- DPAD/UP/DOWN/LEFT/RIGHT: WASD or Arrow Keys
-- A/B: Z/X or K/L
-- SELECT: SHIFT or TAB
-- START: ENTER
+RED HERRING V2 includes the addition of a special attack that builds its meter with every enemy defeated, a leaderboard system that uses the browser's local storage, plus new art and audio.
