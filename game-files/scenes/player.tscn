@@ -164,10 +164,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j2b1d")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"death",
-"speed": 21.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -246,7 +249,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 21.0
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -349,7 +352,6 @@ special_ready_sfx = NodePath("Special Ready")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v3ou4")
-animation = &"death"
 
 [node name="Hurtbox" type="Area2D" parent="."]
 

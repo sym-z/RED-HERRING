@@ -50,7 +50,7 @@ func reset_special_effect():
 		#tween.kill()
 	#scale = Vector2(1.0,1.0)
 	#modulate = Color(1,1,1,1)
-	#using_special = false
+	using_special = false
 	anim.visible = false
 	anim.frame = 0
 	update_bar()

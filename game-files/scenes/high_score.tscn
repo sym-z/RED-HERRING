@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctaseihks685x"]
+[gd_scene load_steps=6 format=3 uid="uid://ctaseihks685x"]
 
 [ext_resource type="Script" uid="uid://c5qajprmqxwnm" path="res://scripts/high_score.gd" id="1_7k23f"]
 [ext_resource type="PackedScene" uid="uid://byss4cejlocok" path="res://scenes/initial.tscn" id="2_qrrcb"]
+[ext_resource type="Texture2D" uid="uid://j4gxxywk0uip" path="res://sprites/highscore-background.png" id="2_vbgfm"]
 [ext_resource type="Theme" uid="uid://064arhy1k4mb" path="res://theme/high_score_label.tres" id="3_uy73o"]
 [ext_resource type="PackedScene" uid="uid://dyuryhvnf20oe" path="res://scenes/shader_layer.tscn" id="4_1jewx"]
 
@@ -17,6 +18,15 @@ init_1 = NodePath("CenterContainer/HBoxContainer/Initial")
 init_2 = NodePath("CenterContainer/HBoxContainer/Initial2")
 init_3 = NodePath("CenterContainer/HBoxContainer/Initial3")
 submit = NodePath("CenterContainer/HBoxContainer/Submit")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vbgfm")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
