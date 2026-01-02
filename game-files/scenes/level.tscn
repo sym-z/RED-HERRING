@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d164o0t7vod04"]
+[gd_scene load_steps=34 format=3 uid="uid://d164o0t7vod04"]
 
 [ext_resource type="Script" uid="uid://dxrp4mtc474qc" path="res://scripts/level.gd" id="1_t1rx8"]
 [ext_resource type="Texture2D" uid="uid://b7cr4mssud7j0" path="res://sprites/life_can.png" id="2_8iemx"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cf6ar5dxqu7h2" path="res://scenes/player.tscn" id="8_82cfe"]
 [ext_resource type="Script" uid="uid://ifj5l8fjsdsl" path="res://scripts/special_bar.gd" id="8_arp2o"]
 [ext_resource type="Texture2D" uid="uid://drss4k4hdm2rj" path="res://sprites/dummy-enemy.png" id="9_gunhw"]
+[ext_resource type="Texture2D" uid="uid://dr150g2rfxjm0" path="res://sprites/special-attack_big.png" id="9_ux5qa"]
 [ext_resource type="AudioStream" uid="uid://spjloutlnuj4" path="res://audio/difficulty_raise.mp3" id="10_8gofh"]
 [ext_resource type="AudioStream" uid="uid://ct0u1emj07ow7" path="res://audio/level_music.mp3" id="11_h6wmr"]
 [ext_resource type="FontFile" uid="uid://dvudd0okjw3ad" path="res://tilesets/med_font_2.png" id="12_8iemx"]
@@ -31,6 +32,98 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gunhw"]
 shader = ExtResource("5_arp2o")
 shader_parameter/speed = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82cfe"]
+atlas = ExtResource("9_ux5qa")
+region = Rect2(0, 0, 576, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gunhw"]
+atlas = ExtResource("9_ux5qa")
+region = Rect2(576, 0, 576, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gofh"]
+atlas = ExtResource("9_ux5qa")
+region = Rect2(1152, 0, 576, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6wmr"]
+atlas = ExtResource("9_ux5qa")
+region = Rect2(1728, 0, 576, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqd0y"]
+atlas = ExtResource("9_ux5qa")
+region = Rect2(0, 640, 576, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k0ak"]
+atlas = ExtResource("9_ux5qa")
+region = Rect2(576, 640, 576, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu01b"]
+atlas = ExtResource("9_ux5qa")
+region = Rect2(1152, 640, 576, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ies3"]
+atlas = ExtResource("9_ux5qa")
+region = Rect2(1728, 640, 576, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy2fk"]
+atlas = ExtResource("9_ux5qa")
+region = Rect2(0, 1280, 576, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmcjb"]
+atlas = ExtResource("9_ux5qa")
+region = Rect2(576, 1280, 576, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_556r4"]
+atlas = ExtResource("9_ux5qa")
+region = Rect2(1152, 1280, 576, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7agi7"]
+atlas = ExtResource("9_ux5qa")
+region = Rect2(1728, 1280, 576, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kih21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82cfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gunhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gofh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6wmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqd0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k0ak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu01b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ies3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy2fk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmcjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_556r4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7agi7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 21.0
+}]
 
 [sub_resource type="Curve2D" id="Curve2D_bbhxf"]
 _data = {
@@ -89,7 +182,7 @@ offset = Vector2(96, 72)
 position = Vector2(352, 276)
 bg = NodePath("../Tween")
 
-[node name="Special Bar" type="TextureProgressBar" parent="Player" node_paths=PackedStringArray("player")]
+[node name="Special Bar" type="TextureProgressBar" parent="Player" node_paths=PackedStringArray("player", "anim")]
 z_index = -1
 material = SubResource("ShaderMaterial_gunhw")
 offset_left = -68.0
@@ -101,6 +194,11 @@ fill_mode = 4
 texture_progress = ExtResource("7_82cfe")
 script = ExtResource("8_arp2o")
 player = NodePath("..")
+anim = NodePath("Special Animation")
+
+[node name="Special Animation" type="AnimatedSprite2D" parent="Player/Special Bar"]
+position = Vector2(67, 68)
+sprite_frames = SubResource("SpriteFrames_kih21")
 
 [node name="Markers" type="Node2D" parent="."]
 

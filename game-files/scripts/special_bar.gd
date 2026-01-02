@@ -1,5 +1,7 @@
 extends TextureProgressBar
 @export var player :Node2D
+@export var anim : AnimatedSprite2D
+
 var rotation_speed : float = 2.
 var using_special : bool = false
 # Called when the node enters the scene tree for the first time.
@@ -8,6 +10,8 @@ func _ready():
 	player.connect("special_ready", update_bar)
 	#player.connect("use_special", update_bar)
 	player.connect("use_special", special_effect)
+	anim.visible = false
+	anim.connect("animation_finished", reset_special_effect)
 	pass # Replace with function body.
 
 func _input(event: InputEvent) -> void:
@@ -28,22 +32,26 @@ func update_bar():
 	else:
 		print("blocked reset")
 	pass
-var tween : Tween
+#var tween : Tween
 func special_effect():
-	if tween:
-		tween.kill()
-	tween = create_tween()
-	tween.bind_node(self)
-	tween.tween_property(self,"scale",scale*5, 1.0)
-	tween.tween_property(self, "modulate", Color(1,1,1,0),0.2)
-	tween.tween_callback(reset_special_effect)
-	tween.play()
+	anim.visible = true
+	anim.play()
+	#if tween:
+		#tween.kill()
+	#tween = create_tween()
+	#tween.bind_node(self)
+	#tween.tween_property(self,"scale",scale*5, 1.0)
+	#tween.tween_property(self, "modulate", Color(1,1,1,0),0.2)
+	#tween.tween_callback(reset_special_effect)
+	#tween.play()
 	pass
 func reset_special_effect():
-	if tween:
-		tween.kill()
-	scale = Vector2(1.0,1.0)
-	modulate = Color(1,1,1,1)
-	using_special = false
+	#if tween:
+		#tween.kill()
+	#scale = Vector2(1.0,1.0)
+	#modulate = Color(1,1,1,1)
+	#using_special = false
+	anim.visible = false
+	anim.frame = 0
 	update_bar()
 	pass
