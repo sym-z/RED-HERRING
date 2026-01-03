@@ -19,8 +19,13 @@ func _input(event):
 		SceneTransition.main_menu()
 
 func generate_score_list():
+	for child in label_parent.get_children():
+		child_delete(child)
 	for initials in SaveSystem.sorted_names:
 		print("ADDING ", initials)
 		var curr_label : Label = score_label_scene.instantiate()
 		curr_label.set_initial_and_score(initials, SaveSystem.high_scores_dict[initials])
 		label_parent.add_child(curr_label)
+
+func child_delete(child : Node):
+	child.call_deferred("queue_free")

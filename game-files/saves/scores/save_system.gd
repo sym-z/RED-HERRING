@@ -95,13 +95,18 @@ func check_file_score(initials: String, score : int):
 		add_score(initials, score)
 # Adds new name and high score to list.
 func add_score(initials : String, score : int):
-	### if high_scores_dict[initials] != null:
-		### if score > high_scores_dict[initials]:
-			### high_scores_dict[initials] = score
-		### else:
-			### continue;
-		### make the if statement below an elif
 	if num_entries > 0:
+		if high_scores_dict.has(str(initials)):
+			if score > high_scores_dict[initials]:
+				sorted_names.erase(initials)
+				if sorted_names.size() == 0:
+					sorted_names.insert(0,initials)
+					high_scores_dict[initials] = score
+					return
+			else:
+				return
+		else:
+			num_entries += 1
 		# Is new score the highest?
 		if score > high_scores_dict[sorted_names.front()]:
 			# Add to the front
@@ -118,7 +123,6 @@ func add_score(initials : String, score : int):
 					sorted_names.insert(i,initials)
 					break
 		high_scores_dict[initials] = score
-		num_entries += 1
 		# Did list go over capacity? If so, delete from end.
 		if sorted_names.size() > ENTRY_LIMIT:
 			var del_name = sorted_names.back()

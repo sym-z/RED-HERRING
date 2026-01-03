@@ -68,6 +68,7 @@ var total_spawns : int
 var bar_mat 
 
 func _ready():
+	special_bar.visible = true
 	music.play()
 	check_lives()
 	position_actors()
@@ -184,6 +185,7 @@ func _on_spawn_timer_timeout():
 
 
 func _on_good_guy_im_dead():
+	special_bar.visible = false
 	check_lives()
 
 
