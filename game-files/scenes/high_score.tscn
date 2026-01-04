@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctaseihks685x"]
+[gd_scene load_steps=11 format=3 uid="uid://ctaseihks685x"]
 
 [ext_resource type="Script" uid="uid://c5qajprmqxwnm" path="res://scripts/high_score.gd" id="1_7k23f"]
 [ext_resource type="PackedScene" uid="uid://byss4cejlocok" path="res://scenes/initial.tscn" id="2_qrrcb"]
@@ -6,8 +6,18 @@
 [ext_resource type="Theme" uid="uid://csk8guluq1p6p" path="res://theme/panel_score_theme.tres" id="3_1ve1n"]
 [ext_resource type="Theme" uid="uid://064arhy1k4mb" path="res://theme/high_score_label.tres" id="3_uy73o"]
 [ext_resource type="PackedScene" uid="uid://dyuryhvnf20oe" path="res://scenes/shader_layer.tscn" id="4_1jewx"]
+[ext_resource type="StyleBox" uid="uid://daie74qlfohrc" path="res://theme/score_box.tres" id="7_p2yeh"]
+[ext_resource type="FontFile" uid="uid://dvudd0okjw3ad" path="res://tilesets/med_font_2.png" id="8_fip0s"]
 
-[node name="High Score" type="Control" node_paths=PackedStringArray("init_1", "init_2", "init_3", "submit")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n314p"]
+bg_color = Color(0.18, 0, 0, 1)
+border_color = Color(0.5, 0.41, 0.14, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vx0t8"]
+bg_color = Color(0.18, 0, 0, 1)
+border_color = Color(0.5, 0.41, 0.14, 1)
+
+[node name="High Score" type="Control" node_paths=PackedStringArray("init_1", "init_2", "init_3", "submit", "overwrite_prompt", "yes_btn", "no_btn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +29,9 @@ init_1 = NodePath("CenterContainer/PanelContainer/HBoxContainer/Initial")
 init_2 = NodePath("CenterContainer/PanelContainer/HBoxContainer/Initial2")
 init_3 = NodePath("CenterContainer/PanelContainer/HBoxContainer/Initial3")
 submit = NodePath("CenterContainer/PanelContainer/HBoxContainer/Submit")
+overwrite_prompt = NodePath("Overwrite Prompt")
+yes_btn = NodePath("Overwrite Prompt/VBoxContainer/HBoxContainer/Yes")
+no_btn = NodePath("Overwrite Prompt/VBoxContainer/HBoxContainer/No")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -62,3 +75,71 @@ theme = ExtResource("3_uy73o")
 text = "     "
 
 [node name="Shader Layer" parent="." instance=ExtResource("4_1jewx")]
+
+[node name="Overwrite Prompt" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 160
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 160
+
+[node name="Panel" type="Panel" parent="Overwrite Prompt"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("7_p2yeh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overwrite Prompt"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Prompt" type="Label" parent="Overwrite Prompt/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_uy73o")
+text = "Overwrite Saved Score?
+
+-press enter to confirm-"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Overwrite Prompt/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 120
+alignment = 1
+
+[node name="Yes" type="Button" parent="Overwrite Prompt/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../No")
+focus_neighbor_top = NodePath("../No")
+focus_neighbor_right = NodePath("../No")
+focus_neighbor_bottom = NodePath("../No")
+focus_next = NodePath("../No")
+focus_previous = NodePath("../No")
+theme_override_fonts/font = ExtResource("8_fip0s")
+theme_override_styles/focus = ExtResource("7_p2yeh")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_p2yeh")
+theme_override_styles/hover = ExtResource("7_p2yeh")
+theme_override_styles/pressed = ExtResource("7_p2yeh")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n314p")
+text = "YES"
+
+[node name="No" type="Button" parent="Overwrite Prompt/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Yes")
+focus_neighbor_top = NodePath("../Yes")
+focus_neighbor_right = NodePath("../Yes")
+focus_neighbor_bottom = NodePath("../Yes")
+focus_next = NodePath("../Yes")
+focus_previous = NodePath("../Yes")
+theme_override_fonts/font = ExtResource("8_fip0s")
+theme_override_styles/focus = ExtResource("7_p2yeh")
+theme_override_styles/hover_pressed = ExtResource("7_p2yeh")
+theme_override_styles/hover = ExtResource("7_p2yeh")
+theme_override_styles/pressed = ExtResource("7_p2yeh")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vx0t8")
+text = "NO"

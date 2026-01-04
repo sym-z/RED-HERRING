@@ -53,6 +53,12 @@ var char_dict : Dictionary[int,String] = {
 	39: '!',
 	40: '?',
 }
+
+@export_category("Overwrite Prompt")
+@export var overwrite_prompt : MarginContainer
+@export var yes_btn : Button
+@export var no_btn : Button
+var overwriting : bool = false
 # Char dict encoding of initials
 var initials : Array[int] = [0,0,0]
 
@@ -153,13 +159,34 @@ func choice_selection():
 	if curr_selection == SELECTIONS.SUBMIT and debug == false:
 		# SEND INFO TO SAVE SYSTEM
 		SaveSystem.add_score(initials_to_string(), Globals.GAME_OVER_SCORE)
-		#TODO: Overwrite score json
-		SaveSystem.write_scores_to_file()
-		# Send to list of high scores
-		SceneTransition.score_list()
+		if overwriting == false:
+			#TODO: Overwrite score json
+			SaveSystem.write_scores_to_file()
+			# Send to list of high scores
+			SceneTransition.score_list()
 		pass
 
+func show_overwrite():
+	overwriting = true
+	overwrite_prompt.visible = true
+	yes_btn.grab_focus() 
+	pass
+func yes_overwrite():
+	# Make and call SaveSystem.force_save(initials_to_string(), Globals.GAME_OVER_SCORE)
+	SaveSystem.force_save(initials_to_string(),Globals.GAME_OVER_SCORE)
+	SaveSystem.write_scores_to_file()
+	SceneTransition.score_list()
+	pass
+func no_overwrite():
+	# Close prompt?
+	overwrite_prompt.visible = false
+	SceneTransition.score_list()
+	pass
 func _ready():
+	SaveSystem.connect("overwrite_prompt", show_overwrite)
+	yes_btn.connect("pressed", yes_overwrite)
+	no_btn.connect("pressed", no_overwrite)
+	overwrite_prompt.visible = false
 	label_arr = [init_1,init_2,init_3,submit]
 	curr_label = label_arr[curr_selection]
 	set_arrows()

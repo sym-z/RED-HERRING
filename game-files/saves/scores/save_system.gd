@@ -13,6 +13,9 @@ var high_scores_dict : Dictionary[String, int] = {}
 var sorted_names : Array[String] = []
 
 var use_local_storage : bool = true
+
+signal overwrite_prompt
+
 func _ready():
 	if use_local_storage == true:
 		print(LocalStorage.get_item("TEST"))
@@ -97,14 +100,16 @@ func check_file_score(initials: String, score : int):
 func add_score(initials : String, score : int):
 	if num_entries > 0:
 		if high_scores_dict.has(str(initials)):
-			if score > high_scores_dict[initials]:
-				sorted_names.erase(initials)
-				if sorted_names.size() == 0:
-					sorted_names.insert(0,initials)
-					high_scores_dict[initials] = score
-					return
-			else:
-				return
+			overwrite_prompt.emit()
+			return
+			#if score > high_scores_dict[initials]:
+				#sorted_names.erase(initials)
+				#if sorted_names.size() == 0:
+					#sorted_names.insert(0,initials)
+					#high_scores_dict[initials] = score
+					#return
+			#else:
+				#return
 		else:
 			num_entries += 1
 		# Is new score the highest?
@@ -136,7 +141,30 @@ func add_score(initials : String, score : int):
 		num_entries += 1
 	LocalStorage.set_item("sorted", JSON.stringify(sorted_names))
 
-
+func force_save(initials, score):
+	# Remove from sorted names
+	sorted_names.erase(initials)
+	# Reinsert into sorted names
+	# Is new score the highest?
+	if score > high_scores_dict[sorted_names.front()]:
+		# Add to the front
+		sorted_names.insert(0,initials)
+	# Is the new score the lowest?
+	elif score < high_scores_dict[sorted_names.back()]:
+		# Insert at back 
+		sorted_names.append(initials)
+	else:
+		# Iterate and find the correct position
+		for i in range(sorted_names.size()):
+			var comp = sorted_names[i]
+			if high_scores_dict[comp] < score:
+				sorted_names.insert(i,initials)
+				break
+	# Overwrite dict
+	high_scores_dict[initials] = score
+	# Set LocalStorage
+	LocalStorage.set_item("sorted", JSON.stringify(sorted_names))
+	pass
 func write_scores_to_file():
 	var high_score_JSON = JSON.stringify(high_scores_dict)
 	LocalStorage.set_item("scores", high_score_JSON)
